@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elenco Blaugrana — FC Barcelona 26/27</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="logo_barça.svg" type="image/x-icon">
+</head>
+<body class="font-body text-slate-200 min-h-screen bg-navy-950 pb-24">
+
+<!-- ===== HEADER ===== -->
+<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
+           style="background: conic-gradient(from 180deg, #A50044 0 50%, #004D98 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
+        <img src="logo_barça.svg" alt="Logo Barça" class="w-8 h-8">
+      </div>
+      <div>
+        <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026/27</p>
+        <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Elenco Blaugrana</h1>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+      <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+      <a href="elenco.html" class="text-gold hover:text-white transition-colors">Elenco</a>
+      <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+      <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
+    </nav>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden sm:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
+    <nav class="flex flex-col gap-4 text-base font-medium">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-slate-300 hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
+      <a href="elenco.html" class="text-gold hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-300 hover:text-gold transition-colors py-1 font-semibold">Simulador</a>
+    </nav>
+  </div>
+</header>
+
+
+<main class="max-w-6xl mx-auto px-5 sm:px-8 mt-8 space-y-10">
+
+  <!-- SEÇÃO: GOLEIROS -->
+  <section>
+    <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-gold"></span> Goleiros
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
+        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+        <div><h3 class="font-display text-base text-white font-semibold">Joan García</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
+      </div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
+        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+        <div><h3 class="font-display text-base text-white font-semibold">Wojciech Szczęsny</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
+      </div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
+        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+        <div><h3 class="font-display text-base text-white font-semibold">Dominik Livaković</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
+      </div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
+        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+        <div><h3 class="font-display text-base text-white font-semibold">Diego Kochen </h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: DEFENSORES -->
+  <section>
+    <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-blaugrana"></span> Defensores
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Jules Koundé</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">João Cancelo</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Alejandro Balde</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Pau Cubarsí</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Andreas Christensen</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Eric García</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Gerard Martín</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Héctor Fort</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Álvaro Cortés </h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: MEIO-CAMPISTAS -->
+  <section>
+    <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-garnet"></span> Meio-campistas
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Pedri <span class="text-xs text-gold font-normal">(Vice-Capitão)</span></h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Gavi</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Frenkie de Jong</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Dani Olmo</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Fermín López</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Rodri</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Marc Casadó</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Marc Bernal</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Xavi Espart </h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: ATACANTES -->
+  <section>
+    <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Atacantes
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Lamine Yamal</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Raphinha <span class="text-xs text-gold font-normal">(Capitão)</span></h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Anthony Gordon</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Karim Adeyemi</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Roony Bardghji</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Jesse Bisiwu</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Hamza Abdelkarim</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-10 text-xs text-slate-500 border-t border-navy-900 mt-16">
+  FC Barcelona &copy; 2026/27 — Portal do Plantel Oficial
+</footer>
+
+<script src="utils.js"></script>
+</body>
+</html>

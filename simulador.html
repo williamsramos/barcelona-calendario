@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Partidas — FC Barcelona 26/27</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="logo_barça.svg" type="image/x-icon">
+</head>
+<body class="font-body bg-navy-950 text-slate-200 min-h-screen pb-20">
+
+<!-- ===== HEADER ===== -->
+<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
+           style="background: conic-gradient(from 180deg, #A50044 0 50%, #004D98 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
+        <img src="logo_barça.svg" alt="Logo Barça" class="w-8 h-8">
+      </div>
+      <div>
+        <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026/27</p>
+        <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Simulador de Jogos</h1>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+      <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+      <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+      <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+      <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-gold hover:text-white transition-colors font-semibold">Simulador</a>
+    </nav>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden sm:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
+    <nav class="flex flex-col gap-4 text-base font-medium">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-slate-300 hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
+      <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-gold hover:text-gold transition-colors py-1 font-semibold">Simulador</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Conteúdo Principal -->
+  <main class="max-w-4xl mx-auto px-4 mt-8 space-y-6">
+    
+    <!-- Filtros e Ações -->
+    <div class="bg-navy-900 border border-navy-700 rounded-2xl p-6 shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <h2 class="font-display text-lg text-white font-semibold">Simulador da Temporada</h2>
+        <p class="text-xs text-slate-400 mt-1">Altere os gols abaixo para simular resultados. Os dados são salvos automaticamente.</p>
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <label for="filterComp" class="text-xs text-slate-400 font-semibold uppercase tracking-wider sr-only">Filtrar por competição</label>
+        <select id="filterComp" class="bg-navy-950 border border-navy-700 text-xs text-slate-200 px-3 py-2.5 rounded-lg focus:outline-none focus:border-gold font-medium transition flex-1 sm:flex-none">
+          <option value="all">Todas as Competições</option>
+          <option value="laliga">La Liga</option>
+          <option value="champions">Champions League</option>
+        </select>
+        <button id="btnSaveSimulation" class="bg-gold hover:bg-amber-400 text-navy-950 font-display font-bold text-xs px-4 py-2.5 rounded-lg transition shadow whitespace-nowrap">
+          💾 Salvar
+        </button>
+      </div>
+    </div>
+
+    <!-- Lista de Jogos -->
+    <div id="simuladorList" class="space-y-4">
+      <!-- Carregado via JS -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-xs text-slate-500 border-t border-navy-900 mt-16">
+    FC Barcelona &copy; 2026/27 — Simulador Oficial
+  </footer>
+
+  <script src="utils.js"></script>
+  <script src="simulador.js"></script>
+</body>
+</html>

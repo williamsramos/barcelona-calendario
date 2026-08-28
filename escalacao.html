@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escalação Tática — FC Barcelona 26/27</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="logo_barça.svg" type="image/x-icon">
+</head>
+<body class="font-body bg-navy-950 text-slate-200 min-h-screen pb-20">
+
+<!-- ===== HEADER ===== -->
+<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
+           style="background: conic-gradient(from 180deg, #A50044 0 50%, #004D98 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
+        <img src="logo_barça.svg" alt="Logo Barça" class="w-8 h-8">
+      </div>
+      <div>
+        <p class="text-[10px] sm:text-[11px] tracking-[0.3em] text-gold uppercase font-semibold">Temporada 2026/27</p>
+        <h1 class="font-display text-xl sm:text-3xl font-semibold text-white tracking-wide -mt-0.5">Montar Escalação Tática</h1>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+      <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
+      <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+      <a href="escalacao.html" class="text-gold hover:text-white transition-colors">Escalação</a>
+      <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
+    </nav>
+
+      <!-- Hamburger Button -->
+      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
+        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobileMenu" class="hidden sm:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
+    <nav class="flex flex-col gap-4 text-base font-medium">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-slate-300 hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
+      <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-gold hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-400 hover:text-gold transition-colors py-1 font-semibold">Simulador</a>
+    </nav>
+  </div>
+</header>>
+
+  <!-- Campo Virtual -->
+  <main class="max-w-4xl mx-auto px-4 mt-8 space-y-6">
+    <div class="flex flex-wrap justify-between items-center bg-navy-900 p-4 rounded-xl border border-navy-700 gap-4">
+      <div>
+        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Esquema Tático Selecionado</p>
+        <p class="font-display text-lg text-white font-bold">4-3-3 Ofensivo</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="showToast('✓ Formação salva com sucesso!', 'success')" class="bg-garnet hover:bg-garnet-600 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition">Salvar Formação</button>
+      </div>
+    </div>
+
+    <!-- Representação do Gramado -->
+    <div class="relative w-full aspect-[4/5] sm:aspect-[16/10] bg-emerald-900 border-4 border-emerald-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col justify-between p-6">
+      <!-- Linhas do Campo -->
+      <div class="absolute inset-x-0 top-1/2 h-0.5 bg-emerald-700/60 pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-emerald-700/60 rounded-full pointer-events-none"></div>
+
+      <!-- Ataque -->
+      <div class="flex justify-center gap-6 z-10">
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Gordon (LW)</div>
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Raphinha (ST)</div>
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Lamine Yamal (RW)</div>
+      </div>
+
+      <!-- Meio-Campo -->
+      <div class="flex justify-center gap-8 z-10">
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Pedri (CM)</div>
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Marc Bernal (CDM)</div>
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Fermin (CAM)</div>
+      </div>
+
+      <!-- Defesa -->
+      <div class="flex justify-center gap-4 sm:gap-8 z-10">
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Xavi Espart (LB)</div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Pau Cubarsí (CB)</div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Gerard  Martin (CB) </div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Eric Garcia (RB)</div>
+      </div>
+
+      <!-- Goleiro -->
+      <div class="flex justify-center z-10">
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Joan García (GK)</div>
+      </div>
+    </div>
+
+    <!--Tecnico-->
+<div class="flex justify-start z-10">
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">
+    Hans-Dieter Flick - Manager
+  </div>
+</div>
+
+
+<!-- Reservas -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 justify-center z-10 w-full max-w-4xl mx-auto">
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Aller (GK)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Szczesny (GK)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Christensen (CB)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Koundé (RB)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Baldé (LB)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Cancelo (LB/CM)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Rodri (CDM/CM)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Brian Fariñas (CM)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Olmo (CAM)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Adeyemi (LW)</div>
+  <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Abdelkarim (ST)</div>
+</div>
+
+<div class="flex flex-wrap justify-between items-center bg-navy-900 p-4 rounded-xl border border-navy-700 gap-4">
+      <div>
+        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Esquema Tático Selecionado</p>
+        <p class="font-display text-lg text-white font-bold">4-2-3-1</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="showToast('✓ Formação salva com sucesso!', 'success')" class="bg-garnet hover:bg-garnet-600 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition">Salvar Formação</button>
+      </div>
+    </div>
+
+    <!-- Representação do Gramado (Goleiro embaixo, Ataque no topo) -->
+    <div class="relative w-full aspect-[4/5] sm:aspect-[16/10] bg-emerald-900 border-4 border-emerald-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col-reverse justify-between p-6">
+      <!-- Linhas do Campo -->
+      <div class="absolute inset-x-0 top-1/2 h-0.5 bg-emerald-700/60 pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-emerald-700/60 rounded-full pointer-events-none"></div>
+
+      <!-- Goleiro (Linha 1 - Base) -->
+      <div class="flex justify-center z-10">
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Joan García (GK)</div>
+      </div>
+
+      <!-- Defesa (Linha de 4) -->
+      <div class="flex justify-center gap-4 sm:gap-8 z-10">
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Xavi Espart (LB)</div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Christensen (CB)</div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Gerard Martin (CB)</div>
+        <div class="bg-navy-950/90 border border-navy-700 text-white text-xs font-semibold px-2 sm:px-3 py-1.5 rounded-lg shadow">Eric Garcia (RB)</div>
+      </div>
+
+      <!-- Volantes / Meio-Campo (Linha de 2) -->
+      <div class="flex justify-center gap-12 sm:gap-24 z-10">
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Gavi (CM)</div>
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Marc Bernal (CDM)</div>
+      </div>
+
+      <!-- Meias Ofensivos / Pontas (Linha de 3) -->
+      <div class="flex justify-between w-full max-w-2xl mx-auto gap-4 z-10 px-4 sm:px-12">
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Adeyemi (LW)</div>
+        <div class="bg-navy-950/90 border border-blaugrana text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Fermin (CAM)</div>
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Lamine Yamal (RW)</div>
+      </div>
+
+      <!-- Centroavante (O "1" isolado no topo) -->
+      <div class="flex justify-center z-10">
+        <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">Raphinha (ST)</div>
+      </div>
+    </div>
+
+    <!-- Tecnico -->
+    <div class="flex justify-start z-10">
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">
+        Hans-Dieter Flick - Manager
+      </div>
+    </div>
+
+    <!-- Reservas -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 justify-center z-10 w-full max-w-4xl mx-auto">
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Aller (GK)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Szczesny (GK)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Alvaro Cortés (CB)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Cubarsi (CB)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Koundé (RB)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Baldé (LB)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Pesquer (LB)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Cancelo (LB/CM)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Brian Fariñas (CM)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Olmo (CAM)</div>
+      <div class="bg-navy-950/90 border border-gold text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow text-center">Gordon (ST)</div>
+    </div>
+
+  </main>
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-xs text-slate-500 border-t border-navy-900 mt-16">
+    FC Barcelona &copy; 2026/27 — Escalações Oficiais
+  </footer>
+
+  <script src="utils.js"></script>
+</body>
+</html>
