@@ -49,14 +49,14 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 38ª",                    date: "30/05", time: "14:00", team1: "getafe",                team2: "barcelona",           stadium: "Coliseum Alfonso Pérez",    score: "x" },
 
   // ---------------- CHAMPIONS LEAGUE · FASE DE LIGA 2026-27 ----------------
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "08/09", time: "", team1: "barcelona",             team2: "manchester-city",       stadium: "Camp Nou",                  score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "13/10", time: "", team1: "paris-saint-germain", team2: "barcelona",             stadium: "Parc des Príncipes",        score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "20/10", time: "", team1: "barcelona",             team2: "aston-villa",           stadium: "Camp Nou",                  score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "03/11", time: "", team1: "sporting-cp",         team2: "barcelona",             stadium: "Estádio José Alvalade",     score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "", team1: "barcelona",             team2: "feyenoord",             stadium: "Camp Nou",                  score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "08/12", time: "", team1: "galatasaray",         team2: "barcelona",             stadium: "Rams Park",                 score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "", team1: "barcelona",             team2: "como",                  stadium: "Camp Nou",                  score: "x" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "27/01", time: "", team1: "sabah",               team2: "barcelona",             stadium: "Estádio a definir",         score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "09/09", time: "13:45", team1: "barcelona",             team2: "feyenoord",       stadium: "Camp Nou",                  score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "13/10", time: "16:00", team1: "galatasaray", team2: "barcelona",             stadium: "Rams Park",        score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "20/10", time: "16:00", team1: "paris-saint-germain",             team2: "barcelona",           stadium: "Parc des Princes",                  score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "03/11", time: "17:00", team1: "barcelona",         team2: "aston-villa",             stadium: "Camp Nou",     score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "14:45", team1: "sabah",             team2: "barcelona",             stadium: "Bank Respublika Arena",                  score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "08/12", time: "17:00", team1: "barcelona",         team2: "manchester-city",             stadium: "Camp Nou",                 score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "17:00", team1: "sporting-cp",             team2: "barcelona",                  stadium: "José Alvalade",                  score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "27/01", time: "17:00", team1: "barcelona",               team2: "como",             stadium: "Camp Nou",         score: "x" },
 
     // ----------------  Troféu Joan Gamper ----------------
   { id: cryptoId(), comp: "amistoso", round: " Troféu Joan Gamper", date: "19/08", time: "", team1: "barcelona",             team2: "ah-ahly",       stadium: "Camp Nou",                  score: "2x1" },
