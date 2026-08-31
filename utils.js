@@ -117,26 +117,26 @@ const LocalStorage = {
 
 // 📊 Matriz com os dados atualizados da classificação da La Liga 2026/27
 const dadosClassificacao = [
-  { pos: 1, slug: "real-madrid", clube: "Real Madrid", pts: 9, pj: 3, vit: 3, e: 0, der: 0, gm: 10, gc: 2, sg: 8, ultimas: ['V', 'V', 'V'] },
-  { pos: 2, slug: "atletico-madrid", clube: "Atlético Madrid", pts: 7, pj: 3, vit: 2, e: 1, der: 0, gm: 7, gc: 3, sg: 4, ultimas: ['V', 'E', 'V'] },
-  { pos: 3, slug: "alaves", clube: "Alavés", pts: 7, pj: 3, vit: 2, e: 1, der: 0, gm: 5, gc: 1, sg: 4, ultimas: ['V', 'E', 'V'] },
-  { pos: 4, slug: "barcelona", clube: "Barcelona", pts: 6, pj: 2, vit: 2, e: 0, der: 0, gm: 7, gc: 0, sg: 7, ultimas: ['V', 'V'] },
-  { pos: 5, slug: "sevilla", clube: "Sevilla", pts: 6, pj: 3, vit: 2, e: 0, der: 1, gm: 6, gc: 5, sg: 1, ultimas: ['V', 'V', 'D'] },
-  { pos: 6, slug: "betis", clube: "Betis", pts: 6, pj: 3, vit: 2, e: 0, der: 1, gm: 7, gc: 7, sg: 0, ultimas: ['V', 'V', 'D'] },
-  { pos: 7, slug: "la-coruna", clube: "La Coruña", pts: 5, pj: 3, vit: 1, e: 2, der: 0, gm: 5, gc: 3, sg: 2, ultimas: ['E', 'E', 'V'] },
-  { pos: 8, slug: "osasuna", clube: "Osasuna", pts: 4, pj: 2, vit: 1, e: 1, der: 0, gm: 2, gc: 1, sg: 1, ultimas: ['V', 'E'] },
+  { pos: 1, slug: "barcelona", clube: "Barcelona", pts: 9, pj: 3, vit: 3, e: 0, der: 0, gm: 12, gc: 2, sg: 10, ultimas: ['V', 'V', 'V'] },
+  { pos: 2, slug: "real-madrid", clube: "Real Madrid", pts: 9, pj: 3, vit: 3, e: 0, der: 0, gm: 10, gc: 2, sg: 8, ultimas: ['V', 'V', 'V'] },
+  { pos: 3, slug: "atletico-madrid", clube: "Atlético Madrid", pts: 7, pj: 3, vit: 2, e: 1, der: 0, gm: 7, gc: 3, sg: 4, ultimas: ['V', 'E', 'V'] },
+  { pos: 4, slug: "alaves", clube: "Alavés", pts: 7, pj: 3, vit: 2, e: 1, der: 0, gm: 5, gc: 1, sg: 4, ultimas: ['V', 'E', 'V'] },
+  { pos: 5, slug: "osasuna", clube: "Osasuna", pts: 7, pj: 3, vit: 2, e: 1, der: 0, gm: 3, gc: 1, sg: 2, ultimas: ['V', 'E', 'V'] },
+  { pos: 6, slug: "sevilla", clube: "Sevilla", pts: 6, pj: 3, vit: 2, e: 0, der: 1, gm: 6, gc: 5, sg: 1, ultimas: ['V', 'V', 'D'] },
+  { pos: 7, slug: "betis", clube: "Betis", pts: 6, pj: 3, vit: 2, e: 0, der: 1, gm: 7, gc: 7, sg: 0, ultimas: ['V', 'V', 'D'] },
+  { pos: 8, slug: "la-coruna", clube: "La Coruña", pts: 5, pj: 3, vit: 1, e: 2, der: 0, gm: 5, gc: 3, sg: 2, ultimas: ['E', 'E', 'V'] },
   { pos: 9, slug: "levante", clube: "Levante", pts: 4, pj: 3, vit: 1, e: 1, der: 1, gm: 5, gc: 5, sg: 0, ultimas: ['D', 'E', 'V'] },
   { pos: 10, slug: "racing", clube: "Racing", pts: 4, pj: 3, vit: 1, e: 1, der: 1, gm: 5, gc: 3, sg: 2, ultimas: ['V', 'E', 'D'] },
   { pos: 11, slug: "espanyol", clube: "Espanyol", pts: 3, pj: 3, vit: 1, e: 0, der: 2, gm: 5, gc: 4, sg: 1, ultimas: ['V', 'D', 'D'] },
   { pos: 12, slug: "ath-bilbao", clube: "Ath. Bilbao", pts: 3, pj: 3, vit: 1, e: 0, der: 2, gm: 2, gc: 2, sg: 0, ultimas: ['D', 'D', 'V'] },
-  { pos: 13, slug: "getafe", clube: "Getafe", pts: 3, pj: 2, vit: 1, e: 0, der: 1, gm: 1, gc: 3, sg: -2, ultimas: ['D', 'V'] },
+  { pos: 13, slug: "getafe", clube: "Getafe", pts: 3, pj: 3, vit: 1, e: 0, der: 2, gm: 1, gc: 4, sg: -3, ultimas: ['D', 'V', 'D'] },
   { pos: 14, slug: "real-sociedad", clube: "Real Sociedad", pts: 3, pj: 3, vit: 1, e: 0, der: 2, gm: 3, gc: 6, sg: -3, ultimas: ['D', 'D', 'V'] },
   { pos: 15, slug: "villarreal", clube: "Villarreal", pts: 2, pj: 3, vit: 0, e: 2, der: 1, gm: 4, gc: 5, sg: -1, ultimas: ['E', 'E', 'D'] },
-  { pos: 16, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 1, pj: 2, vit: 0, e: 1, der: 1, gm: 2, gc: 3, sg: -1, ultimas: ['D', 'E'] },
+  { pos: 16, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 1, pj: 3, vit: 0, e: 1, der: 2, gm: 4, gc: 8, sg: -4, ultimas: ['D', 'E', 'D'] },
   { pos: 17, slug: "valencia", clube: "Valencia", pts: 1, pj: 3, vit: 0, e: 1, der: 2, gm: 1, gc: 4, sg: -3, ultimas: ['D', 'E', 'D'] },
   { pos: 18, slug: "celta-de-vigo", clube: "Celta de Vigo", pts: 1, pj: 3, vit: 0, e: 1, der: 2, gm: 1, gc: 4, sg: -3, ultimas: ['D', 'E', 'D'] },
-  { pos: 19, slug: "elche", clube: "Elche", pts: 0, pj: 3, vit: 0, e: 0, der: 3, gm: 1, gc: 9, sg: -8, ultimas: ['D', 'D', 'D'] },
-  { pos: 20, slug: "malaga", clube: "Málaga", pts: 1, pj: 3, vit: 0, e: 1, der: 2, gm: 1, gc: 7, sg: -6, ultimas: ['D', 'E', 'D'] }
+  { pos: 19, slug: "malaga", clube: "Málaga", pts: 1, pj: 3, vit: 0, e: 1, der: 2, gm: 1, gc: 7, sg: -6, ultimas: ['D', 'E', 'D'] },
+  { pos: 20, slug: "elche", clube: "Elche", pts: 0, pj: 3, vit: 0, e: 0, der: 3, gm: 1, gc: 9, sg: -8, ultimas: ['D', 'D', 'D'] }
 ];
 
 function renderizarTabelaClassificacao() {
