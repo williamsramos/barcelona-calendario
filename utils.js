@@ -155,7 +155,7 @@ function renderizarTabelaClassificacao() {
     if (item.pos >= 1 && item.pos <= 5) {
       // Posições 1 a 5: Champions League
       posBadgeClass += "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
-    } else if (item.pos === 6 || item.pos === 10) {
+    } else if (item.pos === 6 ) {
       // Posições 6 e 10: Liga Europa
       posBadgeClass += "bg-amber-500/20 text-amber-400 border border-amber-500/30";
     } else if (item.pos === 7) {
