@@ -3,6 +3,10 @@
    Tailwind config centralizado + estilos customizados
    =========================================================== */
 
+/* ===========================================================
+   Calendário Blaugrana — estilos customizados
+   =========================================================== */
+
 :root {
   --navy-950: #080D1A;
   --navy-900: #0B1220;
@@ -54,8 +58,18 @@ body {
 
 /* ---------- Correção responsiva para nomes de times em telas mobile ---------- */
 @media (max-width: 640px) {
+  /* Reduz padding interno do ticket para ganhar espaço */
+  .ticket .flex-1.px-3 {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  
+  /* Força limite estrito para o nome do time não quebrar o layout */
   .team-name-label {
-    max-width: 85px; /* Define um limite seguro para o nome não estourar e sumir */
+    max-width: 72px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: inline-block;
   }
 }
