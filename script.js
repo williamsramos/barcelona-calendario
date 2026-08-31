@@ -1,11 +1,12 @@
 /* ===========================================================
    Calendário Blaugrana — lógica da aplicação
-   Dados ficam em memória (variável `games`).
+   Dados salvos via localStorage e responsividade corrigida
    =========================================================== */
 
 function cryptoId() { return 'g_' + Math.random().toString(36).slice(2, 10); }
 
-let games = [
+// Dados iniciais padrão caso o localStorage esteja vazio
+const defaultGames = [
   // ---------------- LA LIGA · 1º TURNO (Rodadas 1ª a 19ª) ----------------
   { id: cryptoId(), comp: "laliga", round: "Rodada 1ª",                     date: "23/08", time: "16:30", team1: "elche",                 team2: "barcelona",           stadium: "Manuel Martínez Valero",    score: "0x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 2ª",                     date: "27/08", time: "16:00", team1: "barcelona",             team2: "athletic-club",       stadium: "Camp Nou",                  score: "2x0" },
@@ -58,11 +59,19 @@ let games = [
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "17:00", team1: "sporting-cp",             team2: "barcelona",                  stadium: "José Alvalade",                  score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "27/01", time: "17:00", team1: "barcelona",               team2: "como",             stadium: "Camp Nou",         score: "x" },
 
-    // ----------------  Troféu Joan Gamper ----------------
+  // ----------------  Troféu Joan Gamper ----------------
   { id: cryptoId(), comp: "amistoso", round: " Troféu Joan Gamper", date: "19/08", time: "", team1: "barcelona",             team2: "ah-ahly",       stadium: "Camp Nou",                  score: "2x1" },
 ];
 
-/* ======================= TIMES (cores/abreviações — sem escudos oficiais) ======================= */
+// Carregar do localStorage se existir, senão usa o padrão
+let games = JSON.parse(localStorage.getItem("blaugrana_games")) || defaultGames;
+
+// Função auxiliar para salvar os dados no navegador
+function saveGames() {
+  localStorage.setItem("blaugrana_games", JSON.stringify(games));
+}
+
+/* ======================= TIMES ======================= */
 const TEAMS = {
   "barcelona":         { name: "Barcelona",         abbr: "BAR", color: "#A50044" },
   "elche":             { name: "Elche",             abbr: "ELC", color: "#00753C" },
@@ -93,7 +102,6 @@ const TEAMS = {
   "como":              { name: "Como 1907",         abbr: "COM", color: "#0057A0" },
   "sabah":             { name: "Sabah FK",          abbr: "SAB", color: "#C9A227" },
   "al-ahly":           { name: "Al Ahly",           abbr: "AA",   color: "#9E5F2E" },
-
 };
 
 function slugify(str) {
@@ -124,7 +132,7 @@ let editingId = null;
 /* ======================= DATAS ======================= */
 function parseDate(dstr) {
   const [d, m] = dstr.split("/").map(Number);
-  const year = m >= 7 ? 2026 : 2027; // temporada 26/27
+  const year = m >= 7 ? 2026 : 2027; 
   return new Date(year, m - 1, d);
 }
 function fmtLongDate(dstr) {
@@ -144,7 +152,7 @@ function gamesForTab(tabId) {
   return games.filter(g => g.comp === tabId);
 }
 
-/* ======================= 1. DESTAQUE INTELIGENTE DO PRÓXIMO JOGO ======================= */
+/* ======================= 1. DESTAQUE INTELIGENTE ======================= */
 function getNextGame() {
   const pendentes = games
     .filter(g => !g.score || g.score === "x")
@@ -164,20 +172,20 @@ function renderHero() {
   const diasLabel = dias === 0 ? "É hoje!" : dias === 1 ? "Falta 1 dia" : dias > 1 ? `Faltam ${dias} dias` : "Em andamento";
 
   box.innerHTML = `
-    <div class="ticket next-game rise-in rounded-2xl border border-navy-600/60 px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-center gap-5 sm:gap-8">
+    <div class="ticket next-game rise-in rounded-2xl border border-navy-600/60 px-4 sm:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
       <div class="flex items-center gap-2 shrink-0">
         <span class="w-2.5 h-2.5 rounded-full bg-gold pulse-dot"></span>
         <span class="text-[11px] font-bold tracking-[0.2em] text-gold uppercase">Próximo jogo · ${diasLabel}</span>
       </div>
-      <div class="flex items-center gap-4 sm:gap-6 flex-1 justify-center">
-        <div class="flex items-center gap-2.5">
-          <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-sm text-white" style="background:${t1.color}">${t1.abbr}</div>
-          <span class="font-display text-base sm:text-lg text-white">${t1.name}</span>
+      <div class="flex items-center gap-3 sm:gap-6 flex-1 justify-center w-full min-w-0">
+        <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
+          <span class="font-display text-xs sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t1.color}">${t1.abbr}</div>
         </div>
-        <span class="font-display text-slate-500 text-sm">vs</span>
-        <div class="flex items-center gap-2.5">
-          <span class="font-display text-base sm:text-lg text-white">${t2.name}</span>
-          <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-sm text-white" style="background:${t2.color}">${t2.abbr}</div>
+        <span class="font-display text-slate-500 text-sm shrink-0">vs</span>
+        <div class="flex items-center gap-2 flex-1 min-w-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t2.color}">${t2.abbr}</div>
+          <span class="font-display text-xs sm:text-lg text-slate-200 truncate">${t2.name}</span>
         </div>
       </div>
       <div class="text-center sm:text-right shrink-0">
@@ -222,13 +230,13 @@ function renderDashboard() {
 }
 function statCard(label, value, colorClass) {
   return `
-    <div class="stat-card rounded-xl px-4 py-3.5 text-center">
+    <div class="stat-card rounded-xl px-3 sm:px-4 py-3.5 text-center">
       <p class="text-[10px] uppercase tracking-wider text-slate-500 mb-1.5">${label}</p>
-      <p class="font-display text-2xl font-semibold ${colorClass}">${value}</p>
+      <p class="font-display text-xl sm:text-2xl font-semibold ${colorClass}">${value}</p>
     </div>`;
 }
 
-/* ======================= 3. BARRA DE PROGRESSO DA TEMPORADA ======================= */
+/* ======================= 3. PROGRESSO DA TEMPORADA ======================= */
 function renderProgress() {
   const list = gamesForTab(activeTab);
   const total = list.length;
@@ -277,7 +285,7 @@ function renderSubFilters() {
 /* ======================= RENDER: CARD (TICKET) ======================= */
 function badge(slug) {
   const t = getTeam(slug);
-  return `<div class="w-11 h-11 rounded-full flex items-center justify-center font-display font-bold text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
+  return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
 }
 
 function renderCard(g, isNext) {
@@ -290,45 +298,45 @@ function renderCard(g, isNext) {
 
   return `
   <div class="ticket ${isNext ? "next-game" : ""} rise-in rounded-xl overflow-hidden flex border border-navy-600/60 group">
-    <div class="w-24 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40">
+    <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40">
       <span class="font-mono text-[10px] text-slate-500 uppercase">${fmtLongDate(g.date).split(" ")[0]}</span>
-      <span class="font-display text-2xl text-white font-semibold leading-none mt-0.5">${g.date.split("/")[0]}</span>
+      <span class="font-display text-xl sm:text-2xl text-white font-semibold leading-none mt-0.5">${g.date.split("/")[0]}</span>
       <span class="font-mono text-[10px] text-slate-500 uppercase mt-0.5">${fmtLongDate(g.date).split(" ").slice(1).join(" ")}</span>
     </div>
     <div class="perforation my-3"></div>
-    <div class="flex-1 px-4 sm:px-5 py-4 min-w-0">
+    <div class="flex-1 px-3 sm:px-5 py-4 min-w-0">
       <div class="flex items-center justify-between mb-3">
-        <p class="text-[11px] font-semibold text-gold uppercase tracking-wider truncate">
+        <p class="text-[10px] sm:text-[11px] font-semibold text-gold uppercase tracking-wider truncate mr-1">
           ${compLabel} <span class="text-slate-500 font-normal">• ${g.round}</span>
-          ${isNext ? '<span class="ml-2 text-gold">★ próximo</span>' : ""}
+          ${isNext ? '<span class="ml-1 sm:ml-2 text-gold">★ próximo</span>' : ""}
         </p>
-        <div class="flex items-center gap-2 shrink-0 ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button data-edit="${g.id}" class="edit-btn text-slate-600 hover:text-gold" title="Editar jogo">
+        <div class="flex items-center gap-2 shrink-0 ml-1 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+          <button data-edit="${g.id}" class="edit-btn text-slate-500 hover:text-gold p-1" title="Editar jogo">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
           </button>
-          <button data-del="${g.id}" class="del-btn text-slate-600 hover:text-garnet-400" title="Remover jogo">
+          <button data-del="${g.id}" class="del-btn text-slate-500 hover:text-garnet-400 p-1" title="Remover jogo">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
           </button>
         </div>
       </div>
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2.5 flex-1 min-w-0 justify-end">
-          <span class="text-sm font-medium text-slate-200 truncate text-right">${t1.name}</span>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate text-right team-name-label">${t1.name}</span>
           ${badge(g.team1)}
         </div>
-        <div class="shrink-0 px-2">
+        <div class="shrink-0 px-1 sm:px-2">
           ${played
-            ? `<div class="font-display text-xl font-bold text-white bg-navy-950/60 rounded-lg px-3 py-1 border border-navy-600">${s1} <span class="text-slate-500">x</span> ${s2}</div>`
-            : `<div class="font-mono text-xs text-slate-500 border border-dashed border-navy-600 rounded-lg px-2.5 py-1.5">${g.time || "--:--"}</div>`}
+            ? `<div class="font-display text-sm sm:text-xl font-bold text-white bg-navy-950/60 rounded-lg px-2 sm:px-3 py-1 border border-navy-600">${s1} <span class="text-slate-500">x</span> ${s2}</div>`
+            : `<div class="font-mono text-[10px] sm:text-xs text-slate-500 border border-dashed border-navy-600 rounded-lg px-2 py-1.5">${g.time || "--:--"}</div>`}
         </div>
-        <div class="flex items-center gap-2.5 flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-1 min-w-0">
           ${badge(g.team2)}
-          <span class="text-sm font-medium text-slate-200 truncate">${t2.name}</span>
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate team-name-label">${t2.name}</span>
         </div>
       </div>
-      <p class="text-[11px] text-slate-500 mt-3 flex items-center gap-1.5">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        ${g.stadium || "Estádio a definir"} ${g.time && played ? "• " + g.time : ""}
+      <p class="text-[10px] sm:text-[11px] text-slate-500 mt-3 flex items-center gap-1.5 truncate">
+        <svg class="shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span class="truncate">${g.stadium || "Estádio a definir"} ${g.time && played ? "• " + g.time : ""}</span>
       </p>
     </div>
   </div>`;
@@ -364,6 +372,7 @@ function render() {
     btn.onclick = () => {
       if (confirm("Remover este jogo do calendário?")) {
         games = games.filter(g => g.id !== btn.dataset.del);
+        saveGames(); // Salva alteração no localStorage
         render();
       }
     };
@@ -374,7 +383,7 @@ function render() {
   });
 }
 
-/* ======================= 5. MODAL — CRIAÇÃO E EDIÇÃO ======================= */
+/* ======================= MODAL ======================= */
 const overlay = document.getElementById("modalOverlay");
 let mandoSelecionado = "casa";
 
@@ -471,6 +480,7 @@ document.getElementById("gameForm").addEventListener("submit", e => {
     games.push({ id: cryptoId(), ...gameData });
   }
 
+  saveGames(); // Salva alteração no localStorage
   activeTab = ["copadelrey", "supercopa"].includes(gameData.comp) ? "copas" : gameData.comp;
   activeSub = "todos";
   closeModal();
@@ -484,12 +494,9 @@ const hamburgerIcon = document.getElementById('hamburgerIcon');
 
 hamburgerBtn.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('hidden');
-  
   if (!isOpen) {
-    // Transform into 'X'
     hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>';
   } else {
-    // Revert back to Hamburger
     hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>';
   }
 });
