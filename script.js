@@ -10,7 +10,7 @@ const defaultGames = [
   // ---------------- LA LIGA · 1º TURNO (Rodadas 1ª a 19ª) ----------------
   { id: cryptoId(), comp: "laliga", round: "Rodada 1ª",                     date: "23/08", time: "16:30", team1: "elche",                 team2: "barcelona",           stadium: "Manuel Martínez Valero",    score: "0x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 2ª",                     date: "27/08", time: "16:00", team1: "barcelona",             team2: "athletic-club",       stadium: "Camp Nou",                  score: "2x0" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 3ª",                     date: "31/08", time: "16:30", team1: "barcelona",             team2: "rayo-vallecano",      stadium: "Camp Nou",                  score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 3ª",                     date: "31/08", time: "16:30", team1: "barcelona",             team2: "rayo-vallecano",      stadium: "Camp Nou",                  score: "5x2" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 4ª",                     date: "06/09", time: "11:15", team1: "valencia",              team2: "barcelona",           stadium: "Mestalla",                  score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 5ª",                     date: "13/09", time: "16:00", team1: "levante",               team2: "barcelona",           stadium: "Ciudad de Valencia",        score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 6ª",                     date: "16/09", time: "16:00", team1: "barcelona",             team2: "racing-santander",    stadium: "Camp Nou",                  score: "x" },
