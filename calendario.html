@@ -44,8 +44,8 @@
   </div>
 
 <!-- ===== HEADER ===== -->
-<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+<header class="relative z-50 border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
     <div class="flex items-center gap-4">
       <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
            style="background: conic-gradient(from 180deg, #A50044 0 50%, #004D98 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Navegação Desktop -->
     <nav class="hidden md:flex gap-6 text-sm font-medium">
       <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
       <a href="calendario.html" class="text-gold hover:text-white transition-colors">Calendário</a>
@@ -67,30 +67,26 @@
       <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
     </nav>
 
-    <div class="flex items-center gap-3">
-      <button id="btnAddGame" class="hidden sm:flex items-center gap-2 bg-garnet hover:bg-garnet-600 transition-colors text-white text-sm font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-garnet/30">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Adicionar jogo
-      </button>
-
-      <!-- Hamburger Button -->
-      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
-        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
+    <!-- Botão Hambúrguer Mobile -->
+    <button id="hamburgerBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Menu">
+      <svg id="iconBars" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg id="iconClose" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
-  <div id="mobileMenu" class="hidden sm:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
-    <nav class="flex flex-col gap-4 text-base font-medium">
-      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
-      <a href="calendario.html" class="text-gold hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
-      <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
-      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
-      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
-      <a href="simulador.html" class="text-slate-300 hover:text-gold transition-colors py-1 font-semibold">Simulador</a>
+  <!-- Menu Dropdown Mobile -->
+  <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-t border-navy-800 px-6 py-6 w-full">
+    <nav class="flex flex-col gap-4 text-base font-medium text-center">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-gold hover:text-gold transition-colors py-2 border-b border-white/5">Calendário</a>
+      <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Escalação</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5 font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-300 hover:text-gold transition-colors py-2 font-semibold">Simulador</a>
     </nav>
   </div>
 </header>

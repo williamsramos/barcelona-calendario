@@ -6,14 +6,32 @@
 <title>Elenco Blaugrana — FC Barcelona 26/27</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            800: '#1e293b',
+            900: '#0f172a',
+            950: '#020617'
+          },
+          gold: '#FFC72C',
+          blaugrana: '#A50044',
+          garnet: '#7B002C'
+        }
+      }
+    }
+  }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="logo_barça.svg" type="image/x-icon">
 </head>
 <body class="font-body text-slate-200 min-h-screen bg-navy-950 pb-24">
 
 <!-- ===== HEADER ===== -->
-<header class="relative z-10 overflow-hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
+<header class="relative z-50 border-b border-white/10 bg-navy-900/40 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-6 flex items-center justify-between gap-4">
     <div class="flex items-center gap-4">
       <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-display font-bold text-lg shrink-0 shadow-lg"
            style="background: conic-gradient(from 180deg, #A50044 0 50%, #004D98 50% 100%); box-shadow: 0 0 0 3px #FFC72C55;">
@@ -25,7 +43,7 @@
       </div>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Navegação Desktop -->
     <nav class="hidden md:flex gap-6 text-sm font-medium">
       <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
       <a href="calendario.html" class="text-slate-400 hover:text-white transition-colors">Calendário</a>
@@ -35,106 +53,63 @@
       <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
     </nav>
 
-      <!-- Hamburger Button -->
-      <button id="hamburgerBtn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Menu">
-        <svg id="hamburgerIcon" class="w-7 h-7 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
+    <!-- Botão Hambúrguer Mobile -->
+    <button id="hamburgerBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Menu">
+      <svg id="iconBars" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg id="iconClose" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
   </div>
 
-  <!-- Mobile Dropdown Menu -->
-  <div id="mobileMenu" class="hidden sm:hidden bg-navy-900 border-b border-navy-800 px-4 py-6 flex flex-col items-center justify-center text-center space-y-4">
-    <nav class="flex flex-col gap-4 text-base font-medium">
-      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Início</a>
-      <a href="calendario.html" class="text-slate-300 hover:text-white transition-colors py-1 border-b border-white/5">Calendário</a>
-      <a href="elenco.html" class="text-gold hover:text-gold transition-colors py-1 border-b border-white/5">Elenco</a>
-      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5">Escalação</a>
-      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-1 border-b border-white/5 font-semibold">Classificação</a>
-      <a href="simulador.html" class="text-slate-300 hover:text-gold transition-colors py-1 font-semibold">Simulador</a>
+  <!-- Menu Dropdown Mobile (Separado e isolado) -->
+  <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-t border-navy-800 px-6 py-6 w-full">
+    <nav class="flex flex-col gap-4 text-base font-medium text-center">
+      <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Início</a>
+      <a href="calendario.html" class="text-slate-300 hover:text-white transition-colors py-2 border-b border-white/5">Calendário</a>
+      <a href="elenco.html" class="text-gold hover:text-gold transition-colors py-2 border-b border-white/5">Elenco</a>
+      <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Escalação</a>
+      <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5 font-semibold">Classificação</a>
+      <a href="simulador.html" class="text-slate-300 hover:text-gold transition-colors py-2 font-semibold">Simulador</a>
     </nav>
   </div>
 </header>
 
+<!-- ===== CONTEÚDO PRINCIPAL ===== -->
+<main id="main-content" class="max-w-6xl mx-auto px-5 sm:px-8 mt-8 space-y-10">
 
-<main class="max-w-6xl mx-auto px-5 sm:px-8 mt-8 space-y-10">
-
-  <!-- SEÇÃO: GOLEIROS -->
+  <!-- GOLEIROS -->
   <section>
     <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-gold"></span> Goleiros
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
-        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
-        <div><h3 class="font-display text-base text-white font-semibold">Joan García</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
-      </div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
-        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
-        <div><h3 class="font-display text-base text-white font-semibold">Wojciech Szczęsny</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
-      </div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
-        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
-        <div><h3 class="font-display text-base text-white font-semibold">Dominik Livaković</h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
-      </div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-5 flex items-center gap-4 hover:border-blaugrana transition">
-        <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
-        <div><h3 class="font-display text-base text-white font-semibold">Diego Kochen </h3><p class="text-[11px] text-slate-400">Goleiro</p></div>
-      </div>
-    </div>
+    <div id="container-goleiros" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
   </section>
 
-  <!-- SEÇÃO: DEFENSORES -->
+  <!-- DEFENSORES -->
   <section>
     <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-blaugrana"></span> Defensores
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Jules Koundé</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">João Cancelo</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Alejandro Balde</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Pau Cubarsí</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Andreas Christensen</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Eric García</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Gerard Martín</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Héctor Fort</h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Álvaro Cortés </h3><p class="text-[11px] text-slate-400">Defensor</p></div></div>
-    </div>
+    <div id="container-defensores" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </section>
 
-  <!-- SEÇÃO: MEIO-CAMPISTAS -->
+  <!-- MEIO-CAMPISTAS -->
   <section>
     <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-garnet"></span> Meio-campistas
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Pedri <span class="text-xs text-gold font-normal">(Vice-Capitão)</span></h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Gavi</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Frenkie de Jong</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Dani Olmo</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Fermín López</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Rodri</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Marc Casadó</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Marc Bernal</h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Xavi Espart </h3><p class="text-[11px] text-slate-400">Meio-campista</p></div></div>
-    </div>
+    <div id="container-meias" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </section>
 
-  <!-- SEÇÃO: ATACANTES -->
+  <!-- ATACANTES -->
   <section>
     <h2 class="font-display text-lg tracking-wide text-slate-300 uppercase mb-4 flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Atacantes
     </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Lamine Yamal</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Raphinha <span class="text-xs text-gold font-normal">(Capitão)</span></h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Anthony Gordon</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Karim Adeyemi</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Roony Bardghji</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Jesse Bisiwu</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-      <div class="bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center gap-3 hover:border-blaugrana transition"><div><h3 class="font-display text-base text-white font-semibold">Hamza Abdelkarim</h3><p class="text-[11px] text-slate-400">Atacante</p></div></div>
-    </div>
+    <div id="container-atacantes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </section>
 
 </main>
@@ -144,6 +119,171 @@
   FC Barcelona &copy; 2026/27 — Portal do Plantel Oficial
 </footer>
 
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Lógica do Menu Mobile sem falha de CSS
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconBars = document.getElementById('iconBars');
+  const iconClose = document.getElementById('iconClose');
+
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const estaEscondido = mobileMenu.classList.contains('hidden');
+
+      if (estaEscondido) {
+        mobileMenu.classList.remove('hidden');
+        iconBars.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        iconBars.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    });
+  }
+
+  // Elenco inicial com Gols e Assistências
+  const elencoInicial = [
+    // Goleiros
+    { id: 1, name: "Joan García", position: "Goleiro", category: "goleiros" },
+    { id: 2, name: "Wojciech Szczęsny", position: "Goleiro", category: "goleiros" },
+    { id: 3, name: "Dominik Livaković", position: "Goleiro", category: "goleiros" },
+    { id: 4, name: "Diego Kochen", position: "Goleiro", category: "goleiros" },
+
+    // Defensores
+    { id: 5, name: "Jules Koundé", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 6, name: "João Cancelo", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 7, name: "Alejandro Balde", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 8, name: "Pau Cubarsí", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 9, name: "Andreas Christensen", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 10, name: "Eric García", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 11, name: "Gerard Martín", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    // { id: 12, name: "Héctor Fort", position: "Defensor", category: "defensores", goals: 0, assists: 0 },
+    { id: 13, name: "Xavi Espart", position: "Defensor", category: "defensores", goals: 0, assists: 2},
+
+    // Meio-campistas
+    { id: 14, name: "Pedri", position: "Meio-campista", category: "meias", badge: "(Vice-Capitão)", goals: 0, assists: 1 },
+    { id: 15, name: "Gavi", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+    { id: 16, name: "Frenkie de Jong", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+    { id: 17, name: "Dani Olmo", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+    { id: 18, name: "Fermín López", position: "Meio-campista", category: "meias", goals: 3, assists: 0 },
+    { id: 19, name: "Rodri", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+    // { id: 20, name: "Marc Casadó", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+    { id: 21, name: "Marc Bernal", position: "Meio-campista", category: "meias", goals: 0, assists: 1 },
+    { id: 22, name: "Xavi Espart", position: "Meio-campista", category: "meias", goals: 0, assists: 0 },
+
+    // Atacantes
+    { id: 23, name: "Lamine Yamal", position: "Atacante", category: "atacantes", goals: 2, assists: 0 },
+    { id: 24, name: "Raphinha", position: "Atacante", category: "atacantes", badge: "(Capitão)", goals: 5, assists: 1 },
+    { id: 25, name: "Anthony Gordon", position: "Atacante", category: "atacantes", goals: 0, assists: 3 },
+    { id: 26, name: "Karim Adeyemi", position: "Atacante", category: "atacantes", goals: 1, assists: 1 },
+    { id: 27, name: "Roony Bardghji", position: "Atacante", category: "atacantes", goals: 0, assists: 0 },
+    { id: 28, name: "Jesse Bisiwu", position: "Atacante", category: "atacantes", goals: 0, assists: 0 },
+    { id: 29, name: "Hamza Abdelkarim", position: "Atacante", category: "atacantes", goals: 0, assists: 0 },
+    { id: 30, name: "Gabriel Jesus", position: "Atacantes", category: "atacantes", goals: 0, assists: 0 },
+  ];
+
+  let elenco = JSON.parse(localStorage.getItem('elencoBarca')) || elencoInicial;
+
+  function salvarElenco() {
+    localStorage.setItem('elencoBarca', JSON.stringify(elenco));
+    renderizarElenco();
+  }
+
+  function alterarEstatistica(id, field, quantidade) {
+    const jogador = elenco.find(j => j.id === id);
+    if (jogador && jogador[field] !== undefined) {
+      jogador[field] = Math.max(0, jogador[field] + quantidade);
+      salvarElenco();
+    }
+  }
+
+  function renderizarElenco() {
+    const containers = {
+      goleiros: document.getElementById('container-goleiros'),
+      defensores: document.getElementById('container-defensores'),
+      meias: document.getElementById('container-meias'),
+      atacantes: document.getElementById('container-atacantes')
+    };
+
+    Object.values(containers).forEach(c => { if(c) c.innerHTML = ''; });
+
+    elenco.forEach(j => {
+      const isGoleiro = j.category === 'goleiros';
+      const badgeText = j.badge ? `<span class="text-xs text-gold font-normal">${j.badge}</span>` : '';
+
+      const card = document.createElement('div');
+      card.className = "bg-navy-900 border border-navy-700 rounded-2xl p-4 flex items-center justify-between hover:border-blaugrana transition";
+
+      if (isGoleiro) {
+        card.innerHTML = `
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-navy-800 border border-navy-600 flex items-center justify-center font-display text-sm font-bold text-gold shrink-0">GK</div>
+            <div>
+              <h3 class="font-display text-base text-white font-semibold">${j.name}</h3>
+              <p class="text-[11px] text-slate-400">${j.position}</p>
+            </div>
+          </div>
+        `;
+      } else {
+        card.innerHTML = `
+          <div>
+            <h3 class="font-display text-base text-white font-semibold flex items-center gap-2 flex-wrap">
+              ${j.name} ${badgeText}
+            </h3>
+            <p class="text-[11px] text-slate-400">${j.position}</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <!-- Contador de Gols -->
+            <div class="flex items-center gap-1">
+              <div class="text-xs font-semibold px-2 py-1 rounded-full bg-navy-800 border border-navy-700 ${j.goals > 0 ? 'text-gold' : 'text-slate-300'} flex items-center gap-1">
+                ⚽ <span>${j.goals}</span>
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <button data-id="${j.id}" data-type="goals" data-action="add" class="btn-stat w-4 h-4 bg-navy-800 hover:bg-gold hover:text-navy-950 text-slate-300 text-[10px] font-bold rounded flex items-center justify-center transition">+</button>
+                <button data-id="${j.id}" data-type="goals" data-action="sub" class="btn-stat w-4 h-4 bg-navy-800 hover:bg-red-500 hover:text-white text-slate-300 text-[10px] font-bold rounded flex items-center justify-center transition">-</button>
+              </div>
+            </div>
+
+            <!-- Contador de Assistências -->
+            <div class="flex items-center gap-1">
+              <div class="text-xs font-semibold px-2 py-1 rounded-full bg-navy-800 border border-navy-700 ${j.assists > 0 ? 'text-sky-400' : 'text-slate-300'} flex items-center gap-1">
+                🅰️ <span>${j.assists}</span>
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <button data-id="${j.id}" data-type="assists" data-action="add" class="btn-stat w-4 h-4 bg-navy-800 hover:bg-sky-400 hover:text-navy-950 text-slate-300 text-[10px] font-bold rounded flex items-center justify-center transition">+</button>
+                <button data-id="${j.id}" data-type="assists" data-action="sub" class="btn-stat w-4 h-4 bg-navy-800 hover:bg-red-500 hover:text-white text-slate-300 text-[10px] font-bold rounded flex items-center justify-center transition">-</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (containers[j.category]) {
+        containers[j.category].appendChild(card);
+      }
+    });
+  }
+
+  // Event Delegation para clique nos botões de ajuste
+  document.getElementById('main-content').addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-stat');
+    if (btn) {
+      const id = Number(btn.dataset.id);
+      const field = btn.dataset.type;
+      const action = btn.dataset.action;
+      alterarEstatistica(id, field, action === 'add' ? 1 : -1);
+    }
+  });
+
+  renderizarElenco();
+});
+</script>
+
 <script src="utils.js"></script>
 </body>
 </html>
+
