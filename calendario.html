@@ -58,14 +58,22 @@
     </div>
 
     <!-- Navegação Desktop -->
-    <nav class="hidden md:flex gap-6 text-sm font-medium">
-      <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
-      <a href="calendario.html" class="text-gold hover:text-white transition-colors">Calendário</a>
-      <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
-      <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
-      <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
-      <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
-    </nav>
+    <div class="hidden md:flex items-center gap-6">
+      <nav class="flex gap-6 text-sm font-medium">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Início</a>
+        <a href="calendario.html" class="text-gold hover:text-white transition-colors">Calendário</a>
+        <a href="elenco.html" class="text-slate-400 hover:text-white transition-colors">Elenco</a>
+        <a href="escalacao.html" class="text-slate-400 hover:text-white transition-colors">Escalação</a>
+        <a href="classificacao.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Classificação</a>
+        <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
+      </nav>
+
+      <!-- Botão Adicionar Jogo Desktop corrigido -->
+      <button id="btnAddGameDesktop" class="flex items-center gap-2 bg-garnet hover:bg-garnet-600 text-white px-4 py-2 rounded-xl font-semibold transition-colors shadow-lg shadow-garnet/30">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+        Adicionar Jogo
+      </button>
+    </div>
 
     <!-- Botão Hambúrguer Mobile -->
     <button id="hamburgerBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Menu">
@@ -123,9 +131,7 @@
 
   <!-- ===== LISTAS ===== -->
   <div class="mt-6">
-
-
-        <section id="section-proximos">
+    <section id="section-proximos">
       <h2 class="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-300 uppercase mb-4">
         <span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Próximos jogos
       </h2>
@@ -139,8 +145,6 @@
       <div id="listRecentes" class="grid gap-3"></div>
     </section>
 
-
-
     <div id="emptyState" class="hidden text-center py-16 bg-navy-900/60 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl">
       <p class="font-display text-xl text-slate-200">Nenhum jogo cadastrado nesta aba.</p>
       <p class="text-sm text-slate-400 mt-1">Use "Adicionar jogo" para começar a montar o calendário.</p>
@@ -153,9 +157,8 @@
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
 </button>
 
-
 <!-- ===== 5. MODAL — CRIAÇÃO / EDIÇÃO ===== -->
-<div id="modalOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-40 items-center justify-center px-4">
+<div id="modalOverlay" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] items-center justify-center px-4">
   <div class="bg-navy-900/95 border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl rise-in backdrop-blur-lg">
     <div class="flex items-center justify-between mb-5">
       <h3 id="modalTitle" class="font-display text-xl text-white">Novo jogo</h3>
