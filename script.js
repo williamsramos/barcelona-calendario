@@ -50,7 +50,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 38ª", date: "2027-05-30", time: "14:00", team1: "getafe", team2: "barcelona", stadium: "Coliseum Alfonso Pérez", score: "x" },
 
   // ---------------- CHAMPIONS LEAGUE · FASE DE LIGA ----------------
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "2026-09-09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "2026-09-09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "5x1" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "x" },
@@ -104,7 +104,7 @@ const TEAMS = {
 
 const posicoesCompeticao = {
   laliga: "1º",
-  champions: "3º",
+  champions: "1º",
   todos: "1º"
 };
 
@@ -304,14 +304,44 @@ function computeChampionsStats(list = []) {
   const pontosRestantes = (8 - totalJogos) * 3;
   const saldoGols = gp - gc;
 
-  let statusClassificacao = "Em andamento";
-  if (pontosConquistados >= 15) {
-    statusClassificacao = "Zona de Classificação Direta (G-8)";
-  } else if (pontosConquistados + pontosRestantes < 9) {
-    statusClassificacao = "Risco de Eliminação";
-  } else if (totalJogos > 0) {
-    statusClassificacao = "Zona de Play-offs (G-24)";
-  }
+  // let statusClassificacao = "Em andamento";
+  // if (pontosConquistados >= 15) {
+  //   statusClassificacao = "Zona de Classificação Direta (G-8)";
+  // } else if (pontosConquistados + pontosRestantes < 9) {
+  //   statusClassificacao = "Risco de Eliminação";
+  // } else if (totalJogos > 0) {
+  //   statusClassificacao = "Zona de Play-offs (G-24)";
+  // }
+
+let statusClassificacao = "Em andamento";
+
+// Exemplo de dados do time (certifique-se de que estas variáveis existem no seu código)
+// let posicao = ...; // Se você já calcula a posição na tabela, atribua aqui.
+// let pontosConquistados = 15;
+// let pontosRestantes = 6;
+// let totalJogos = 5;
+
+// Se a posição vier direto da sua tabela, use esta verificação:
+if (typeof posicao !== 'undefined' && posicao <= 8) {
+  statusClassificacao = "Zona de Classificação Direta (G-8)";
+} 
+// Se atingiu a pontuação matemática para o G-8
+else if (pontosConquistados >= 15) {
+  statusClassificacao = "Zona de Classificação Direta (G-8)";
+} 
+// Se já está eliminado matematicamente
+else if (pontosConquistados + pontosRestantes < 9) {
+  statusClassificacao = "Risco de Eliminação";
+} 
+// Se está na zona de play-offs (9º ao 24º)
+else if (typeof posicao !== 'undefined' && posicao <= 24 && posicao >= 9) {
+  statusClassificacao = "Zona de Play-offs (G-24)";
+} 
+// Caso padrão baseado apenas nos jogos disputados
+else if (totalJogos > 0) {
+  statusClassificacao = "Zona de Classificação Direta (G-8)";
+}
+  
 
   return {
     totalJogos,
@@ -323,36 +353,72 @@ function computeChampionsStats(list = []) {
   };
 }
 
-function renderCardChampionsLeague(uclStats) {
-  const saldoFormatado = uclStats.saldoGols > 0 ? `+${uclStats.saldoGols}` : uclStats.saldoGols;
-  
+function renderCardLaLiga(stats) {
+  // Garante que pega a propriedade correta de jogos e pontos
+  const totalJogos = stats.totalJogos !== undefined ? stats.totalJogos : (stats.totalJogados || 0);
+  const totalPontos = stats.pontos !== undefined ? stats.pontos : 0;
+  const statusProj = stats.statusLaLiga || stats.statusClassificacao || "Zona de Classificação";
+  const posAtual = stats.posLaLigaTexto || stats.posLaLiga || "1º";
+
   return `
-    <div class="col-span-full bg-gradient-to-r from-blue-950/80 via-navy-900/90 to-indigo-950/80 border border-blue-500/30 rounded-xl p-4 text-center shadow-lg mb-2">
-      <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
-        <span class="text-xs uppercase tracking-widest font-bold text-blue-400 flex items-center gap-1.5">
-          ⚽ UEFA Champions League · Fase de Liga
+    <div class="col-span-full bg-gradient-to-r from-red-950/80 via-navy-900/90 to-amber-950/80 border border-red-500/30 rounded-xl p-4 shadow-lg mb-2">
+      <div class="flex flex-col sm:flex-row items-center justify-between border-b border-white/10 pb-3 mb-3 gap-2">
+        <span class="text-xs uppercase tracking-widest font-bold text-red-400 flex items-center gap-1.5">
+          🇪🇸 LALIGA EA SPORTS
         </span>
-        <span class="text-[11px] bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded-full border border-blue-400/30">
-          ${uclStats.totalJogos}/8 Jogos
-        </span>
+        <div class="flex items-center gap-3">
+          <span class="text-xs bg-gold/20 text-gold px-2.5 py-0.5 rounded-full border border-gold/30 font-semibold">
+            ${totalPontos} pts
+          </span>
+          <span class="text-[11px] bg-red-500/20 text-red-300 px-2.5 py-0.5 rounded-full border border-red-400/30">
+            ${totalJogos} Jogos
+          </span>
+        </div>
       </div>
       
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-        <div>
-          <p class="text-[10px] uppercase text-slate-400">Pontos</p>
-          <p class="text-lg font-bold text-gold">${uclStats.pontosConquistados} <span class="text-xs text-slate-500">pts</span></p>
-        </div>
-        <div>
-          <p class="text-[10px] uppercase text-slate-400">Aproveitamento</p>
-          <p class="text-lg font-bold text-emerald-400">${uclStats.aproveitamentoUcl}%</p>
-        </div>
-        <div>
-          <p class="text-[10px] uppercase text-slate-400">Saldo de Gols</p>
-          <p class="text-lg font-bold text-blue-300">${saldoFormatado}</p>
-        </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-2 px-1">
         <div>
           <p class="text-[10px] uppercase text-slate-400">Status Projetado</p>
-          <p class="text-xs font-semibold text-slate-200 mt-1">${uclStats.statusClassificacao}</p>
+          <p class="text-xs font-bold text-emerald-400 mt-0.5">${statusProj}</p>
+        </div>
+        <div class="text-center sm:text-right">
+          <p class="text-[10px] uppercase text-slate-400">Posição Atual</p>
+          <p class="text-xs font-bold text-gold mt-0.5">${posAtual}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCardChampionsLeague(uclStats) {
+  const totalPontos = uclStats.pontosConquistados !== undefined ? uclStats.pontosConquistados : (uclStats.pontos || 0);
+  const statusProj = uclStats.statusClassificacao || "Zona de Classificação Direta (G-8)";
+  const posAtual = uclStats.posUclTexto || uclStats.posChampions || "1º (Fase de Liga)";
+
+  return `
+    <div class="col-span-full bg-gradient-to-r from-blue-950/80 via-navy-900/90 to-indigo-950/80 border border-blue-500/30 rounded-xl p-4 shadow-lg mb-2">
+      <div class="flex flex-col sm:flex-row items-center justify-between border-b border-white/10 pb-3 mb-3 gap-2">
+        <span class="text-xs uppercase tracking-widest font-bold text-blue-400 flex items-center gap-1.5">
+          ⚽ UEFA CHAMPIONS LEAGUE · FASE DE LIGA
+        </span>
+        <div class="flex items-center gap-3">
+          <span class="text-xs bg-gold/20 text-gold px-2.5 py-0.5 rounded-full border border-gold/30 font-semibold">
+            ${totalPontos} pts
+          </span>
+          <span class="text-[11px] bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full border border-blue-400/30">
+            ${uclStats.totalJogos}/8 Jogos
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-2 px-1">
+        <div>
+          <p class="text-[10px] uppercase text-slate-400">Status Projetado</p>
+          <p class="text-xs font-bold text-emerald-400 mt-0.5">${statusProj}</p>
+        </div>
+        <div class="text-center sm:text-right">
+          <p class="text-[10px] uppercase text-slate-400">Posição Atual</p>
+          <p class="text-xs font-bold text-gold mt-0.5">${posAtual}</p>
         </div>
       </div>
     </div>
@@ -494,27 +560,48 @@ function renderDashboard() {
   
   const s = computeStats(list);
   const uclStats = computeChampionsStats(todosOsJogos);
+  const totalPontosUcl = uclStats.pontosConquistados !== undefined ? uclStats.pontosConquistados : (uclStats.pontos || 0);
   const compLabel = COMPS.find(c => c.id === tabAtual)?.label || "Geral";
 
   const titleEl = document.getElementById("dashboardTitle");
   if (titleEl) titleEl.textContent = `Desempenho · ${compLabel}`;
 
-  const isLaLiga = tabAtual === "laliga" || tabAtual === "todos";
+  const isChampions = tabAtual === "champions" || tabAtual === "todos";
+  const isLaLigaTab = tabAtual === "laliga" || tabAtual === "todos";
+  
   const saldoFormatado = s.saldoGols > 0 ? `+${s.saldoGols}` : s.saldoGols;
   const corSaldo = s.saldoGols > 0 ? "text-emerald-400" : (s.saldoGols < 0 ? "text-red-400" : "text-slate-300");
 
   const gridEl = document.getElementById("statGrid");
   if (gridEl) {
+    let headerHtml = "";
+    
+    // Trecho atualizado chamando a função renderCardChampionsLeague
+    if (isChampions && tabAtual === "champions") {
+      headerHtml = renderCardChampionsLeague(uclStats);
+    } else if (tabAtual === "laliga") {
+      headerHtml = renderCardLaLiga(s);
+    }
+
+    let cardPosicaoHtml = "";
+    if (tabAtual === "laliga") {
+      cardPosicaoHtml = statCard("Posição La Liga", s.posLaLiga, "text-gold");
+    } else if (tabAtual === "champions") {
+      cardPosicaoHtml = statCard("Posição Champions", s.posChampions, "text-gold");
+    } else {
+      cardPosicaoHtml = `
+        ${statCard("Posição La Liga", s.posLaLiga, "text-gold")}
+        ${statCard("Posição Champions", s.posChampions, "text-gold")}
+      `;
+    }
+
     gridEl.innerHTML = `
-      ${renderCardChampionsLeague(uclStats)}
-      ${statCard("Posição La Liga", s.posLaLiga, "text-gold")}
-      ${statCard("Posição Champions", s.posChampions, "text-gold")}
-      ${isLaLiga ? statCard("Pontos", `${s.pontos} <span class="text-xs text-slate-400">pts</span>`, "text-gold") : ""}
+      ${headerHtml}
+      ${cardPosicaoHtml}
       ${statCard("Jogos", s.totalJogados, "text-slate-200")}
       ${statCard("Aproveitamento Geral", s.aproveitamento + "%", "text-gold")}
       ${statCard("Aprov. Casa (Camp Nou)", s.aproveitamentoCasa + "%", "text-emerald-400")}
       ${statCard("Aprov. Fora", s.aproveitamentoFora + "%", "text-blue-400")}
-      ${isLaLiga ? statCard("Pontos Casa / Fora", `${s.pontosCasa} <span class="text-slate-500 text-sm">/</span> ${s.pontosFora}`, "text-gold") : ""}
       ${statCard("Vitórias", s.v, "text-emerald-400")}
       ${statCard("Empates", s.e, "text-slate-300")}
       ${statCard("Derrotas", s.d, "text-red-400")}
@@ -527,7 +614,6 @@ function renderDashboard() {
     `;
   }
 }
-
 /* ======================= PROGRESSO DA TEMPORADA ======================= */
 function renderProgress() {
   const list = gamesForTab(activeTab);
