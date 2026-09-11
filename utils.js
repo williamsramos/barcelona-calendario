@@ -139,6 +139,9 @@ const dadosClassificacaoInicial = [
   { pos: 20, slug: "valencia", clube: "Valencia", pts: 1, pj: 4, vit: 0, e: 1, der: 3, gm: 1, gc: 9, sg: -8, ultimas: ["E", "D", "D", "D"] }
 ];
 
+//localStorage.clear()
+
+
 let dadosClassificacao = LocalStorage.get('laliga_classificacao', dadosClassificacaoInicial);
 
 function ordenarClassificacao() {
