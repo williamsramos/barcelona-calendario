@@ -104,7 +104,7 @@ const TEAMS = {
 
 const posicoesCompeticao = {
   laliga: "1º",
-  champions: "2º",
+  champions: "3º",
   todos: "1º"
 };
 
