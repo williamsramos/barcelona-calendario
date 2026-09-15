@@ -117,26 +117,26 @@ const LocalStorage = {
 
 // ===== DADOS DE CLASSIFICAÇÃO =====
 const dadosClassificacaoInicial = [
-  { pos: 1, slug: "barcelona", clube: "Barcelona", pts: 12, pj: 4, vit: 4, e: 0, der: 0, gm: 17, gc: 2, sg: 15, ultimas: ["V", "V", "V", "V"] },
-  { pos: 2, slug: "alaves", clube: "Alavés", pts: 10, pj: 4, vit: 3, e: 1, der: 0, gm: 10, gc: 3, sg: 7, ultimas: ["V", "E", "V", "V"] },
-  { pos: 3, slug: "real-madrid", clube: "Real Madrid", pts: 9, pj: 4, vit: 3, e: 0, der: 1, gm: 10, gc: 3, sg: 7, ultimas: ["V", "V", "V", "D"] },
-  { pos: 4, slug: "betis", clube: "Betis", pts: 9, pj: 4, vit: 3, e: 0, der: 1, gm: 5, gc: 5, sg: 0, ultimas: ["V", "V", "D", "V"] },
-  { pos: 5, slug: "la-coruna", clube: "La Coruña", pts: 8, pj: 4, vit: 2, e: 2, der: 0, gm: 8, gc: 5, sg: 3, ultimas: ["E", "E", "V", "V"] },
-  { pos: 6, slug: "atletico-madrid", clube: "Atlético Madrid", pts: 7, pj: 4, vit: 2, e: 1, der: 1, gm: 7, gc: 6, sg: 1, ultimas: ["V", "E", "V", "D"] },
-  { pos: 7, slug: "sevilla", clube: "Sevilla", pts: 7, pj: 4, vit: 2, e: 1, der: 1, gm: 7, gc: 6, sg: 1, ultimas: ["V", "V", "D", "V"] },
-  { pos: 8, slug: "osasuna", clube: "Osasuna", pts: 7, pj: 4, vit: 2, e: 1, der: 1, gm: 5, gc: 6, sg: -1, ultimas: ["E", "V", "V", "D"] },
-  { pos: 9, slug: "real-sociedad", clube: "Real Sociedad", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 6, gc: 8, sg: -2, ultimas: ["D", "D", "V", "E", "V"] },
-  { pos: 10, slug: "ath-bilbao", clube: "Ath. Bilbao", pts: 6, pj: 4, vit: 2, e: 0, der: 2, gm: 6, gc: 5, sg: 1, ultimas: ["D", "D", "V", "V"] },
-  { pos: 11, slug: "levante", clube: "Levante", pts: 5, pj: 4, vit: 1, e: 2, der: 1, gm: 5, gc: 5, sg: 0, ultimas: ["D", "E", "V", "E"] },
-  { pos: 12, slug: "espanyol", clube: "Espanyol", pts: 4, pj: 4, vit: 1, e: 1, der: 2, gm: 6, gc: 5, sg: 1, ultimas: ["V", "D", "D", "E"] },
-  { pos: 13, slug: "racing", clube: "Racing", pts: 4, pj: 4, vit: 1, e: 1, der: 2, gm: 7, gc: 8, sg: -1, ultimas: ["E", "D", "V", "D"] },
-  { pos: 14, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 4, pj: 4, vit: 1, e: 1, der: 2, gm: 7, gc: 10, sg: -3, ultimas: ["D", "E", "D", "V"] },
-  { pos: 15, slug: "getafe", clube: "Getafe", pts: 4, pj: 4, vit: 1, e: 1, der: 2, gm: 2, gc: 5, sg: -3, ultimas: ["D", "V", "D", "E"] },
-  { pos: 16, slug: "celta-de-vigo", clube: "Celta de Vigo", pts: 3, pj: 5, vit: 0, e: 3, der: 2, gm: 2, gc: 5, sg: -3, ultimas: ["E", "D", "D", "E", "E"] },
-  { pos: 17, slug: "villarreal", clube: "Villarreal", pts: 2, pj: 4, vit: 0, e: 2, der: 2, gm: 6, gc: 8, sg: -2, ultimas: ["E", "E", "D", "D"] },
-  { pos: 18, slug: "malaga", clube: "Málaga", pts: 2, pj: 4, vit: 0, e: 2, der: 2, gm: 1, gc: 7, sg: -6, ultimas: ["D", "E", "D", "E"] },
-  { pos: 19, slug: "elche", clube: "Elche", pts: 1, pj: 4, vit: 0, e: 1, der: 3, gm: 5, gc: 12, sg: -7, ultimas: ["E", "D", "D", "D"] },
-  { pos: 20, slug: "valencia", clube: "Valencia", pts: 1, pj: 4, vit: 0, e: 1, der: 3, gm: 1, gc: 9, sg: -8, ultimas: ["E", "D", "D", "D"] }
+  { pos: 1, slug: "barcelona", clube: "Barcelona", pts: 15, pj: 5, vit: 5, e: 0, der: 0, gm: 21, gc: 4, sg: 17, ultimas: ["V", "V", "V", "V", "V"] },
+  { pos: 2, slug: "real-madrid", clube: "Real Madrid", pts: 12, pj: 5, vit: 4, e: 0, der: 1, gm: 14, gc: 4, sg: 10, ultimas: ["V", "V", "V", "D", "V"] },
+  { pos: 3, slug: "betis", clube: "Betis", pts: 12, pj: 5, vit: 4, e: 0, der: 1, gm: 7, gc: 6, sg: 1, ultimas: ["V", "V", "D", "V", "V"] },
+  { pos: 4, slug: "alaves", clube: "Alavés", pts: 10, pj: 5, vit: 3, e: 1, der: 1, gm: 11, gc: 5, sg: 6, ultimas: ["V", "E", "V", "V", "D"] },
+  { pos: 5, slug: "atletico-madrid", clube: "Atlético Madrid", pts: 10, pj: 5, vit: 3, e: 1, der: 1, gm: 10, gc: 6, sg: 4, ultimas: ["V", "E", "V", "D", "V"] },
+  { pos: 6, slug: "sevilla", clube: "Sevilla", pts: 10, pj: 5, vit: 3, e: 1, der: 1, gm: 8, gc: 6, sg: 2, ultimas: ["V", "V", "D", "V", "V"] },
+  { pos: 7, slug: "la-coruna", clube: "La Coruña", pts: 9, pj: 5, vit: 2, e: 3, der: 0, gm: 9, gc: 6, sg: 3, ultimas: ["E", "E", "V", "V", "E"] },
+  { pos: 8, slug: "espanyol", clube: "Espanyol", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 8, gc: 5, sg: 3, ultimas: ["V", "D", "D", "E", "V"] },
+  { pos: 9, slug: "ath-bilbao", clube: "Ath. Bilbao", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 7, gc: 6, sg: 1, ultimas: ["D", "D", "V", "V", "E"] },
+  { pos: 10, slug: "racing", clube: "Racing", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 9, gc: 9, sg: 0, ultimas: ["E", "D", "V", "D", "V"] },
+  { pos: 11, slug: "osasuna", clube: "Osasuna", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 5, gc: 8, sg: -3, ultimas: ["E", "V", "V", "D", "D"] },
+  { pos: 12, slug: "real-sociedad", clube: "Real Sociedad", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 6, gc: 11, sg: -5, ultimas: ["D", "D", "V", "E", "V", "D"] },
+  { pos: 13, slug: "levante", clube: "Levante", pts: 5, pj: 5, vit: 1, e: 2, der: 2, gm: 7, gc: 9, sg: -2, ultimas: ["D", "E", "V", "E", "D"] },
+  { pos: 14, slug: "getafe", clube: "Getafe", pts: 5, pj: 5, vit: 1, e: 2, der: 2, gm: 3, gc: 6, sg: -3, ultimas: ["D", "V", "D", "E", "E"] },
+  { pos: 15, slug: "celta-de-vigo", clube: "Celta de Vigo", pts: 4, pj: 6, vit: 0, e: 4, der: 2, gm: 3, gc: 6, sg: -3, ultimas: ["E", "D", "D", "E", "E", "E"] },
+  { pos: 16, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 4, pj: 5, vit: 1, e: 1, der: 3, gm: 8, gc: 14, sg: -6, ultimas: ["D", "E", "D", "V", "D"] },
+  { pos: 17, slug: "malaga", clube: "Málaga", pts: 3, pj: 5, vit: 0, e: 3, der: 2, gm: 2, gc: 8, sg: -6, ultimas: ["D", "E", "D", "E", "E"] },
+  { pos: 18, slug: "villarreal", clube: "Villarreal", pts: 2, pj: 5, vit: 0, e: 2, der: 3, gm: 7, gc: 10, sg: -3, ultimas: ["E", "E", "D", "D", "D"] },
+  { pos: 19, slug: "elche", clube: "Elche", pts: 2, pj: 5, vit: 0, e: 2, der: 3, gm: 6, gc: 13, sg: -7, ultimas: ["E", "D", "D", "D", "E"] },
+  { pos: 20, slug: "valencia", clube: "Valencia", pts: 1, pj: 5, vit: 0, e: 1, der: 4, gm: 1, gc: 10, sg: -9, ultimas: ["E", "D", "D", "D", "D"] }
 ];
 
 //localStorage.clear()
