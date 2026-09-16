@@ -9,8 +9,7 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 5ª", date: "13/09", time: "16:00", team1: "levante", team2: "barcelona", stadium: "Ciudad de Valencia", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 6ª", date: "16/09", time: "16:00", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "RODADA 6ª", date: "16/09", time: "16:00", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "5x0" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 7ª", date: "20/09", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 8ª", date: "11/10", time: "16:00", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 9ª", date: "18/10", time: "16:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "x" },
@@ -45,7 +44,6 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "RODADA 38ª", date: "30/05", time: "14:00", team1: "getafe", team2: "barcelona", stadium: "Coliseum Alfonso Pérez", score: "x" },
 
   // CHAMPIONS LEAGUE
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "09/09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "13/10", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "20/10", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "03/11", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "x" },
