@@ -13,7 +13,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 3ª", date: "2026-08-31", time: "16:30", team1: "barcelona", team2: "rayo-vallecano", stadium: "Camp Nou", score: "5x2" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 4ª", date: "2026-09-06", time: "11:15", team1: "valencia", team2: "barcelona", stadium: "Mestalla", score: "0x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 5ª", date: "2026-09-13", time: "11:15", team1: "levante", team2: "barcelona", stadium: "Ciudad de Valencia", score: "2x4" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 6ª", date: "2026-09-16", time: "16:30", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 6ª", date: "2026-09-16", time: "16:30", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "7x2" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 7ª", date: "2026-09-20", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 8ª", date: "2026-10-11", time: "13:30", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 9ª", date: "2026-10-18", time: "14:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "x" },
