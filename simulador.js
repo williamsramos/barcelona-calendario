@@ -9,10 +9,9 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 6ª", date: "16/09", time: "16:00", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "5x0" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 7ª", date: "20/09", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 8ª", date: "11/10", time: "16:00", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 9ª", date: "18/10", time: "16:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "RODADA 7ª", date: "20/09", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "0x3" },
+  { id: cryptoId(), comp: "laliga", round: "RODADA 8ª", date: "11/10", time: "16:00", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "4x0" },
+  { id: cryptoId(), comp: "laliga", round: "RODADA 9ª", date: "18/10", time: "16:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "0x3" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 10ª · El Clásico", date: "25/10", time: "16:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 11ª", date: "01/11", time: "14:00", team1: "barcelona", team2: "alaves", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 12ª", date: "08/11", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "x" },

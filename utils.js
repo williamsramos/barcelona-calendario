@@ -144,6 +144,43 @@ const dadosClassificacaoInicial = [
 
 let dadosClassificacao = LocalStorage.get('laliga_classificacao', dadosClassificacaoInicial);
 
+/* ======================= CORES E SIGLAS DOS TIMES ======================= */
+const TIMES_CORES = {
+  "barcelona":       { name: "Barcelona",       abbr: "BAR", color: "#A50044" },
+  "real-madrid":     { name: "Real Madrid",     abbr: "RMA", color: "#4B4B4B" },
+  "betis":           { name: "Betis",           abbr: "BET", color: "#00954C" },
+  "atletico-madrid": { name: "Atlético Madrid", abbr: "ATM", color: "#CB3524" },
+  "sevilla":         { name: "Sevilla",         abbr: "SEV", color: "#D9012C" },
+  "alaves":          { name: "Alavés",          abbr: "ALA", color: "#0057A8" },
+  "la-coruna":       { name: "La Coruña",       abbr: "COR", color: "#0067B1" },
+  "espanyol":        { name: "Espanyol",        abbr: "ESP", color: "#0A5EA8" },
+  "ath-bilbao":      { name: "Ath. Bilbao",     abbr: "ATH", color: "#EE2523" },
+  "racing":          { name: "Racing",          abbr: "RAC", color: "#079046" },
+  "rayo-vallecano":  { name: "Rayo Vallecano",  abbr: "RAY", color: "#E30613" },
+  "real-sociedad":   { name: "Real Sociedad",   abbr: "RSO", color: "#0067B1" },
+  "osasuna":         { name: "Osasuna",         abbr: "OSA", color: "#D2001C" },
+  "villarreal":      { name: "Villarreal",      abbr: "VIL", color: "#FFE667" },
+  "levante":         { name: "Levante",         abbr: "LEV", color: "#00206A" },
+  "getafe":          { name: "Getafe",          abbr: "GET", color: "#005999" },
+  "celta-de-vigo":   { name: "Celta de Vigo",   abbr: "CEL", color: "#8AC3EE" },
+  "valencia":        { name: "Valencia",        abbr: "VAL", color: "#F49B00" },
+  "malaga":          { name: "Málaga",          abbr: "MAL", color: "#0072CE" },
+  "elche":           { name: "Elche",           abbr: "ELC", color: "#00753C" },
+};
+
+function gerarBadgeTime(slugTime) {
+  const info = TIMES_CORES[slugTime] || { abbr: "FC", color: "#3B82F6" };
+
+  // Define texto escuro para fundo muito claro (ex: Villarreal)
+  const corTexto = info.color === "#FFE667" ? "#1E293B" : "#FFFFFF";
+
+  return `
+    <span class="badge-time" style="background-color: ${info.color}; color: ${corTexto};">
+      ${info.abbr}
+    </span>
+  `;
+}
+
 function ordenarClassificacao() {
   dadosClassificacao.sort((a, b) => {
     if (b.pts !== a.pts) return b.pts - a.pts;
@@ -196,7 +233,10 @@ function renderizarTabelaClassificacao() {
 
     tr.innerHTML = `
       <td class="py-3 px-4"><span class="${posBadgeClass}">${item.pos}º</span></td>
-      <td class="py-3 px-4 flex items-center gap-2 font-medium text-slate-200">${item.clube}</td>
+      <td class="py-3 px-4 flex items-center gap-2 font-medium text-slate-200">
+        ${gerarBadgeTime(item.slug)}
+        <span>${item.clube}</span>
+      </td>
       <td class="py-3 px-3 text-center font-mono ${isBarcelona ? 'text-gold font-bold text-base' : 'font-bold text-white'}">${item.pts}</td>
       <td class="py-3 px-3 text-center text-slate-300">${item.pj}</td>
       <td class="py-3 px-3 text-center text-slate-300">${item.vit}</td>
@@ -213,10 +253,31 @@ function renderizarTabelaClassificacao() {
   LocalStorage.set('laliga_classificacao', dadosClassificacao);
 }
 
+/* ======================= LEGENDA DOS CLUBES ======================= */
+function renderizarLegendaTimes() {
+  const container = document.getElementById('legenda-times');
+  if (!container) return;
+
+  const times = dadosClassificacao
+    .map(item => ({ slug: item.slug, ...(TIMES_CORES[item.slug] || { name: item.clube, abbr: "FC", color: "#3B82F6" }) }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+
+  container.innerHTML = times.map(time => {
+    const corTexto = time.color === "#FFE667" ? "#1E293B" : "#FFFFFF";
+    return `
+      <div class="flex items-center gap-2">
+        <span class="badge-time" style="background-color:${time.color}; color:${corTexto};">${time.abbr}</span>
+        <span class="truncate text-sm text-slate-300">${time.name}</span>
+      </div>
+    `;
+  }).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initTailwindConfig();
   initToastContainer();
   renderizarTabelaClassificacao();
+  renderizarLegendaTimes();
 });
 
 /* ======================= HAMBURGER MENU ======================= */

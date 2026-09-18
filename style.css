@@ -56,6 +56,24 @@ body {
   width: 1px;
 }
 
+/* ===========================================================
+   Badges dos Times
+   =========================================================== */
+.badge-time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
 /* ---------- Correção responsiva para nomes de times em telas mobile ---------- */
 @media (max-width: 640px) {
   /* Reduz padding interno do ticket para ganhar espaço */
