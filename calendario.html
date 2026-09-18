@@ -69,16 +69,17 @@
         <a href="simulador.html" class="text-slate-400 hover:text-white transition-colors font-semibold">Simulador</a>
       </nav>
 
-<!-- Botão Adicionar Jogo Desktop corrigido -->
-<button id="btnAddGameDesktop" class="flex items-center gap-2 bg-garnet hover:bg-garnet-600 text-white px-4 py-2 rounded-xl font-semibold transition-colors shadow-lg shadow-garnet/30 whitespace-nowrap">
-  <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
-  </svg>
-  <span>Adicionar Jogo</span>
-</button>
+      <!-- Botão Adicionar Jogo Desktop -->
+      <button id="btnAddGameDesktop" class="flex items-center gap-2 bg-garnet hover:bg-garnet-600 text-white px-4 py-2 rounded-xl font-semibold transition-colors shadow-lg shadow-garnet/30 whitespace-nowrap">
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+        </svg>
+        <span>Adicionar Jogo</span>
+      </button>
+    </div>
 
-    <!-- Botão Hambúrguer Mobile -->
-    <button id="hamburgerBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Menu">
+    <!-- Botão Hambúrguer Mobile Corrigido -->
+    <button id="hamburgerBtn" type="button" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none z-50" aria-label="Menu">
       <svg id="iconBars" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
@@ -88,11 +89,11 @@
     </button>
   </div>
 
-  <!-- Menu Dropdown Mobile -->
-  <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-t border-navy-800 px-6 py-6 w-full">
+  <!-- Menu Dropdown Mobile Corrigido -->
+  <div id="mobileMenu" class="hidden md:hidden bg-navy-900/95 border-t border-navy-800 px-6 py-6 w-full backdrop-blur-lg">
     <nav class="flex flex-col gap-4 text-base font-medium text-center">
       <a href="index.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Início</a>
-      <a href="calendario.html" class="text-gold hover:text-gold transition-colors py-2 border-b border-white/5">Calendário</a>
+      <a href="calendario.html" class="text-gold hover:text-gold transition-colors py-2 border-b border-white/5 font-semibold">Calendário</a>
       <a href="elenco.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Elenco</a>
       <a href="escalacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5">Escalação</a>
       <a href="classificacao.html" class="text-slate-300 hover:text-gold transition-colors py-2 border-b border-white/5 font-semibold">Classificação</a>
@@ -223,6 +224,7 @@
   FC Barcelona &copy; 2026/27 — Calendário de Jogos Oficiais 
 </footer>
 
+<script src="utils.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
