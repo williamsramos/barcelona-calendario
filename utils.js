@@ -117,26 +117,26 @@ const LocalStorage = {
 
 // ===== DADOS DE CLASSIFICAÇÃO =====
 const dadosClassificacaoInicial = [
-  { pos: 1, slug: "barcelona", clube: "Barcelona", pts: 18, pj: 6, vit: 6, e: 0, der: 0, gm: 28, gc: 6, sg: 22, ultimas: ["V", "V", "V", "V", "V"] },
-  { pos: 2, slug: "real-madrid", clube: "Real Madrid", pts: 15, pj: 6, vit: 5, e: 0, der: 1, gm: 17, gc: 6, sg: 11, ultimas: ["V", "V", "D", "V", "V"] },
-  { pos: 3, slug: "betis", clube: "Betis", pts: 15, pj: 6, vit: 5, e: 0, der: 1, gm: 8, gc: 6, sg: 2, ultimas: ["V", "D", "V", "V", "V"] },
-  { pos: 4, slug: "atletico-madrid", clube: "Atlético Madrid", pts: 13, pj: 6, vit: 4, e: 1, der: 1, gm: 14, gc: 6, sg: 8, ultimas: ["E", "V", "D", "V", "V"] },
-  { pos: 5, slug: "sevilla", clube: "Sevilla", pts: 13, pj: 6, vit: 4, e: 1, der: 1, gm: 9, gc: 6, sg: 3, ultimas: ["V", "D", "E", "V", "V"] },
-  { pos: 6, slug: "alaves", clube: "Alavés", pts: 10, pj: 6, vit: 3, e: 1, der: 2, gm: 11, gc: 6, sg: 5, ultimas: ["E", "V", "V", "D", "D"] },
-  { pos: 7, slug: "la-coruna", clube: "La Coruña", pts: 9, pj: 6, vit: 2, e: 3, der: 1, gm: 9, gc: 7, sg: 2, ultimas: ["E", "V", "V", "E", "D"] },
-  { pos: 8, slug: "espanyol", clube: "Espanyol", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 9, gc: 7, sg: 2, ultimas: ["D", "D", "E", "V", "D"] },
-  { pos: 9, slug: "ath-bilbao", clube: "Ath. Bilbao", pts: 7, pj: 5, vit: 2, e: 1, der: 2, gm: 7, gc: 6, sg: 1, ultimas: ["D", "D", "V", "V", "E"] },
-  { pos: 10, slug: "racing", clube: "Racing", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 11, gc: 16, sg: -5, ultimas: ["D", "V", "D", "V", "D"] },
-  { pos: 11, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 10, gc: 15, sg: -5, ultimas: ["E", "D", "V", "D", "V"] },
-  { pos: 12, slug: "real-sociedad", clube: "Real Sociedad", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 6, gc: 11, sg: -5, ultimas: ["D", "V", "E", "V", "D"] },
-  { pos: 13, slug: "osasuna", clube: "Osasuna", pts: 7, pj: 6, vit: 2, e: 1, der: 3, gm: 5, gc: 12, sg: -7, ultimas: ["V", "V", "D", "D", "D"] },
-  { pos: 14, slug: "villarreal", clube: "Villarreal", pts: 5, pj: 6, vit: 1, e: 2, der: 3, gm: 10, gc: 11, sg: -1, ultimas: ["E", "D", "D", "D", "V"] },
-  { pos: 15, slug: "levante", clube: "Levante", pts: 5, pj: 5, vit: 1, e: 2, der: 2, gm: 7, gc: 9, sg: -2, ultimas: ["D", "E", "V", "E", "D"] },
-  { pos: 16, slug: "getafe", clube: "Getafe", pts: 5, pj: 6, vit: 1, e: 2, der: 3, gm: 3, gc: 7, sg: -4, ultimas: ["V", "D", "E", "E", "D"] },
-  { pos: 17, slug: "celta-de-vigo", clube: "Celta de Vigo", pts: 4, pj: 6, vit: 0, e: 4, der: 2, gm: 3, gc: 6, sg: -3, ultimas: ["D", "D", "E", "E", "E"] },
-  { pos: 18, slug: "valencia", clube: "Valencia", pts: 4, pj: 6, vit: 1, e: 1, der: 4, gm: 2, gc: 10, sg: -8, ultimas: ["D", "D", "D", "D", "V"] },
-  { pos: 19, slug: "malaga", clube: "Málaga", pts: 3, pj: 6, vit: 0, e: 3, der: 3, gm: 3, gc: 11, sg: -8, ultimas: ["E", "D", "E", "E", "D"] },
-  { pos: 20, slug: "elche", clube: "Elche", pts: 2, pj: 6, vit: 0, e: 2, der: 4, gm: 8, gc: 16, sg: -8, ultimas: ["D", "D", "D", "E", "D"] }
+  { pos: 1, slug: "barcelona", clube: "Barcelona", pts: 21, pj: 7, vit: 7, e: 0, der: 0, gm: 31, gc: 7, sg: 24, ultimas: ["V", "V", "V", "V", "V"] },
+  { pos: 2, slug: "atletico-madrid", clube: "Atlético de Madrid", pts: 16, pj: 7, vit: 5, e: 1, der: 1, gm: 16, gc: 7, sg: 9, ultimas: ["E", "V", "D", "V", "V"] },
+  { pos: 3, slug: "betis", clube: "Betis", pts: 16, pj: 7, vit: 5, e: 1, der: 1, gm: 9, gc: 7, sg: 2, ultimas: ["V", "D", "V", "V", "V"] },
+  { pos: 4, slug: "real-madrid", clube: "Real Madrid", pts: 15, pj: 7, vit: 5, e: 0, der: 2, gm: 18, gc: 8, sg: 10, ultimas: ["V", "V", "D", "V", "V"] },
+  { pos: 5, slug: "sevilla", clube: "Sevilla", pts: 13, pj: 7, vit: 4, e: 1, der: 2, gm: 10, gc: 9, sg: 1, ultimas: ["V", "D", "E", "V", "V"] },
+  { pos: 6, slug: "alaves", clube: "Alavés", pts: 11, pj: 7, vit: 3, e: 2, der: 2, gm: 11, gc: 6, sg: 5, ultimas: ["E", "V", "V", "D", "D"] },
+  { pos: 7, slug: "la-coruna", clube: "Deportivo La Coruña", pts: 10, pj: 7, vit: 2, e: 4, der: 1, gm: 10, gc: 8, sg: 2, ultimas: ["E", "V", "V", "E", "D"] },
+  { pos: 8, slug: "real-sociedad", clube: "Real Sociedad", pts: 10, pj: 7, vit: 3, e: 1, der: 3, gm: 9, gc: 13, sg: -4, ultimas: ["D", "V", "E", "V", "D"] },
+  { pos: 9, slug: "villarreal", clube: "Villarreal", pts: 8, pj: 7, vit: 2, e: 2, der: 3, gm: 13, gc: 12, sg: 1, ultimas: ["E", "D", "D", "D", "V"] },
+  { pos: 10, slug: "ath-bilbao", clube: "Athletic Bilbao", pts: 8, pj: 6, vit: 2, e: 2, der: 2, gm: 7, gc: 6, sg: 1, ultimas: ["D", "D", "V", "V", "E"] },
+  { pos: 11, slug: "getafe", clube: "Getafe", pts: 8, pj: 7, vit: 2, e: 2, der: 3, gm: 4, gc: 7, sg: -3, ultimas: ["V", "D", "E", "E", "D"] },
+  { pos: 12, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 8, pj: 7, vit: 2, e: 2, der: 3, gm: 11, gc: 16, sg: -5, ultimas: ["E", "D", "V", "D", "V"] },
+  { pos: 13, slug: "osasuna", clube: "Osasuna", pts: 8, pj: 7, vit: 2, e: 2, der: 3, gm: 6, gc: 13, sg: -7, ultimas: ["V", "V", "D", "D", "D"] },
+  { pos: 14, slug: "celta-de-vigo", clube: "Celta de Vigo", pts: 7, pj: 7, vit: 1, e: 4, der: 2, gm: 8, gc: 6, sg: 2, ultimas: ["D", "D", "E", "E", "E"] },
+  { pos: 15, slug: "espanyol", clube: "Espanyol", pts: 7, pj: 7, vit: 2, e: 1, der: 4, gm: 10, gc: 10, sg: 0, ultimas: ["D", "D", "E", "V", "D"] },
+  { pos: 16, slug: "racing", clube: "Racing Santander", pts: 7, pj: 7, vit: 2, e: 1, der: 4, gm: 11, gc: 21, sg: -10, ultimas: ["D", "V", "D", "V", "D"] },
+  { pos: 17, slug: "levante", clube: "Levante", pts: 5, pj: 6, vit: 1, e: 2, der: 3, gm: 8, gc: 12, sg: -4, ultimas: ["D", "E", "V", "E", "D"] },
+  { pos: 18, slug: "elche", clube: "Elche", pts: 5, pj: 7, vit: 1, e: 2, der: 4, gm: 11, gc: 17, sg: -6, ultimas: ["D", "D", "D", "E", "D"] },
+  { pos: 19, slug: "valencia", clube: "Valencia", pts: 4, pj: 7, vit: 1, e: 1, der: 5, gm: 4, gc: 13, sg: -9, ultimas: ["D", "D", "D", "D", "V"] },
+  { pos: 20, slug: "malaga", clube: "Málaga", pts: 3, pj: 7, vit: 0, e: 3, der: 4, gm: 3, gc: 12, sg: -9, ultimas: ["E", "D", "E", "E", "D"] }
 ];
 
 //localStorage.clear()
@@ -281,18 +281,49 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ======================= HAMBURGER MENU ======================= */
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const hamburgerIcon = document.getElementById('hamburgerIcon');
+/* ===========================================================
+   UTILS.JS — Funções Globais e Menu Hambúrguer
+   =========================================================== */
 
-if (hamburgerBtn && mobileMenu && hamburgerIcon) {
-  hamburgerBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('hidden');
+function initHamburgerMenu() {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if (!hamburgerBtn || !mobileMenu) return;
+
+  // Clona o botão para remover listeners de clique acumulados ou duplicados
+  const newBtn = hamburgerBtn.cloneNode(true);
+  hamburgerBtn.parentNode.replaceChild(newBtn, hamburgerBtn);
+
+  newBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     
-    if (!isOpen) {
-      hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>';
-    } else {
-      hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>';
+    // Alterna a classe hidden
+    const estaEscondido = mobileMenu.classList.toggle('hidden');
+
+    // Opção A: Alterna visibilidade se houver elementos de ícone separados
+    const iconBars = document.getElementById('iconBars');
+    const iconClose = document.getElementById('iconClose');
+    if (iconBars && iconClose) {
+      iconBars.classList.toggle('hidden', !estaEscondido);
+      iconClose.classList.toggle('hidden', estaEscondido);
+    }
+
+    // Opção B: Altera a path interna se houver um SVG único (#hamburgerIcon)
+    const hamburgerIcon = document.getElementById('hamburgerIcon');
+    if (hamburgerIcon) {
+      if (!estaEscondido) {
+        hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>';
+      } else {
+        hamburgerIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>';
+      }
     }
   });
+}
+
+// Inicializa automaticamente quando o DOM estiver pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHamburgerMenu);
+} else {
+  initHamburgerMenu();
 }

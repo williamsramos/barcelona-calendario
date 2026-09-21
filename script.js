@@ -14,7 +14,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 4ª", date: "2026-09-06", time: "11:15", team1: "valencia", team2: "barcelona", stadium: "Mestalla", score: "0x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 5ª", date: "2026-09-13", time: "11:15", team1: "levante", team2: "barcelona", stadium: "Ciudad de Valencia", score: "2x4" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 6ª", date: "2026-09-16", time: "16:30", team1: "barcelona", team2: "racing-santander", stadium: "Camp Nou", score: "7x2" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 7ª", date: "2026-09-20", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 7ª", date: "2026-09-20", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "1x3" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 8ª", date: "2026-10-11", time: "13:30", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 9ª", date: "2026-10-18", time: "14:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 10ª · El Clásico", date: "2026-10-25", time: "17:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "x" },
@@ -101,6 +101,40 @@ const TEAMS = {
   "sabah":             { name: "Sabah FK",          abbr: "SAB", color: "#C9A227" },
   "al-ahly":           { name: "Al Ahly",           abbr: "AA",  color: "#9E5F2E" },
 };
+
+function gerarBadgeTime(slugTime) {
+  const info = timesCores[slugTime] || { abbr: "FC", color: "#3B82F6" };
+  
+  // Define texto escuro para fundo muito claro (ex: Villarreal)
+  const corTexto = info.color === "#FFE667" ? "#1E293B" : "#FFFFFF";
+
+  return `
+    <span class="badge-time" style="background-color: ${info.color}; color: ${corTexto};">
+      ${info.abbr}
+    </span>
+  `;
+}
+
+// Exemplo de inclusão dentro da geração de linhas da tabela
+function criarLinhaTabela(item) {
+  return `
+    <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+      <td class="py-3 px-2 text-center text-slate-400 font-bold">${item.pos}º</td>
+      <td class="py-3 px-2 flex items-center gap-3 font-semibold text-white">
+        ${gerarBadgeTime(item.slug)}
+        <span>${item.clube}</span>
+      </td>
+      <td class="py-3 px-2 text-center font-bold text-amber-400">${item.pts}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.pj}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.vit}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.e}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.der}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.gm}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.gc}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.sg}</td>
+    </tr>
+  `;
+}
 
 const posicoesCompeticao = {
   laliga: "1º",
@@ -908,26 +942,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const iconBars = document.getElementById('iconBars');
-  const iconClose = document.getElementById('iconClose');
+// document.addEventListener('DOMContentLoaded', () => {
+//   const hamburgerBtn = document.getElementById('hamburgerBtn');
+//   const mobileMenu = document.getElementById('mobileMenu');
+//   const iconBars = document.getElementById('iconBars');
+//   const iconClose = document.getElementById('iconClose');
 
-  if (hamburgerBtn && mobileMenu) {
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const estaEscondido = mobileMenu.classList.contains('hidden');
+//   if (hamburgerBtn && mobileMenu) {
+//     hamburgerBtn.addEventListener('click', (e) => {
+//       e.stopPropagation();
+//       const estaEscondido = mobileMenu.classList.contains('hidden');
 
-      if (estaEscondido) {
-        mobileMenu.classList.remove('hidden');
-        iconBars.classList.add('hidden');
-        iconClose.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-        iconBars.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-      }
-    });
-  }
-});
+//       if (estaEscondido) {
+//         mobileMenu.classList.remove('hidden');
+//         iconBars.classList.add('hidden');
+//         iconClose.classList.remove('hidden');
+//       } else {
+//         mobileMenu.classList.add('hidden');
+//         iconBars.classList.remove('hidden');
+//         iconClose.classList.add('hidden');
+//       }
+//     });
+//   }
+// });
