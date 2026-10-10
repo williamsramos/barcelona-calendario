@@ -9,7 +9,6 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 7ª", date: "20/09", time: "16:00", team1: "sevilla", team2: "barcelona", stadium: "Ramón Sánchez Pizjuán", score: "0x3" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 8ª", date: "11/10", time: "16:00", team1: "barcelona", team2: "getafe", stadium: "Camp Nou", score: "4x0" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 9ª", date: "18/10", time: "16:00", team1: "real-betis", team2: "barcelona", stadium: "Benito Villamarín", score: "0x3" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 10ª · El Clásico", date: "25/10", time: "16:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "x" },
