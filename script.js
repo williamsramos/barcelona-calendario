@@ -51,7 +51,7 @@ const defaultGames = [
 
   // ---------------- CHAMPIONS LEAGUE · FASE DE LIGA ----------------
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "2026-09-09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "5x1" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "1x4" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-24", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
