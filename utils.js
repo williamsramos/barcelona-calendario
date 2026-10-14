@@ -142,7 +142,17 @@ const dadosClassificacaoInicial = [
 //localStorage.clear()
 
 
-let dadosClassificacao = LocalStorage.get('laliga_classificacao', dadosClassificacaoInicial);
+// Aumente este valor SEMPRE que atualizar dadosClassificacaoInicial
+const CLASSIFICACAO_VERSAO = "2026-10-14-r8";
+
+let dadosClassificacao = (() => {
+  const versaoSalva = LocalStorage.get('laliga_classificacao_versao');
+  if (versaoSalva !== CLASSIFICACAO_VERSAO) {
+    LocalStorage.set('laliga_classificacao_versao', CLASSIFICACAO_VERSAO);
+    LocalStorage.remove('laliga_classificacao');
+  }
+  return LocalStorage.get('laliga_classificacao', dadosClassificacaoInicial);
+})();
 
 /* ======================= CORES E SIGLAS DOS TIMES ======================= */
 const TIMES_CORES = {
