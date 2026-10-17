@@ -138,7 +138,7 @@ function criarLinhaTabela(item) {
 
 const posicoesCompeticao = {
   laliga: "1º",
-  champions: "(2º",
+  champions: "2º",
   todos: "1º"
 };
 
