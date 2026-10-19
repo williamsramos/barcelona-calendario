@@ -129,9 +129,9 @@ const dadosClassificacaoInicial = [
   { pos: 10, slug: "osasuna", clube: "Osasuna", pts: 11, pj: 9, vit: 3, e: 2, der: 4, gm: 10, gc: 18, sg: -8, ultimas: ["V", "V", "D", "D", "D"] },
   { pos: 11, slug: "ath-bilbao", clube: "Athletic Bilbao", pts: 9, pj: 7, vit: 2, e: 3, der: 2, gm: 7, gc: 6, sg: 1, ultimas: ["D", "D", "V", "V", "E"] },
   { pos: 12, slug: "villarreal", clube: "Villarreal", pts: 9, pj: 9, vit: 2, e: 3, der: 4, gm: 13, gc: 13, sg: 0, ultimas: ["E", "D", "D", "D", "V"] },
-  { pos: 13, slug: "espanyol", clube: "Espanyol", pts: 8, pj: 9, vit: 2, e: 2, der: 5, gm: 11, gc: 12, sg: -1, ultimas: ["D", "D", "E", "V", "D"] },
-  { pos: 14, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 8, pj: 7, vit: 2, e: 2, der: 3, gm: 11, gc: 16, sg: -5, ultimas: ["E", "D", "V", "D", "V"] },
-  { pos: 15, slug: "getafe", clube: "Getafe", pts: 8, pj: 8, vit: 2, e: 2, der: 4, gm: 4, gc: 10, sg: -6, ultimas: ["V", "D", "E", "E", "D"] },
+  { pos: 13, slug: "rayo-vallecano", clube: "Rayo Vallecano", pts: 9, pj: 8, vit: 2, e: 3, der: 3, gm: 12, gc: 17, sg: -5, ultimas: ["D", "V", "D", "V", "E"] },
+  { pos: 14, slug: "getafe", clube: "Getafe", pts: 9, pj: 9, vit: 2, e: 3, der: 4, gm: 5, gc: 11, sg: -6, ultimas: ["D", "E", "E", "D", "E"] },
+  { pos: 15, slug: "espanyol", clube: "Espanyol", pts: 8, pj: 9, vit: 2, e: 2, der: 5, gm: 11, gc: 12, sg: -1, ultimas: ["D", "D", "E", "V", "D"] },
   { pos: 16, slug: "racing", clube: "Racing Santander", pts: 8, pj: 9, vit: 2, e: 2, der: 5, gm: 13, gc: 25, sg: -12, ultimas: ["D", "V", "D", "V", "D"] },
   { pos: 17, slug: "levante", clube: "Levante", pts: 7, pj: 8, vit: 1, e: 4, der: 3, gm: 12, gc: 16, sg: -4, ultimas: ["D", "E", "V", "E", "D"] },
   { pos: 18, slug: "elche", clube: "Elche", pts: 7, pj: 9, vit: 1, e: 4, der: 4, gm: 11, gc: 17, sg: -6, ultimas: ["D", "D", "D", "E", "D"] },
@@ -143,7 +143,7 @@ const dadosClassificacaoInicial = [
 
 
 // Aumente este valor SEMPRE que atualizar dadosClassificacaoInicial
-const CLASSIFICACAO_VERSAO = "2026-10-19-r9";
+const CLASSIFICACAO_VERSAO = "2026-10-19-r9b";
 
 let dadosClassificacao = (() => {
   const versaoSalva = LocalStorage.get('laliga_classificacao_versao');
