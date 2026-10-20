@@ -103,7 +103,7 @@ const TEAMS = {
 };
 
 function gerarBadgeTime(slugTime) {
-  const info = timesCores[slugTime] || { abbr: "FC", color: "#3B82F6" };
+  const info = TEAMS[slugTime] || { abbr: "FC", color: "#3B82F6" };
   
   // Define texto escuro para fundo muito claro (ex: Villarreal)
   const corTexto = info.color === "#FFE667" ? "#1E293B" : "#FFFFFF";
@@ -138,9 +138,12 @@ function criarLinhaTabela(item) {
 
 const posicoesCompeticao = {
   laliga: "1º",
-  champions: "3º",
+  champions: "2º",
+  copadelrey: "-",
+  supercopa: "-",
   todos: "1º"
 };
+
 
 function slugify(str) {
   return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -533,6 +536,14 @@ function computeStats(list = []) {
 
   let posLaLiga = "-";
   let posChampions = "Fase de Liga";
+  let posCopaDelRey = "-";
+  let posSupercopa = "-";
+
+  if (typeof posicoesCompeticao !== "undefined" && posicoesCompeticao !== null) {
+    posCopaDelRey = posicoesCompeticao.copadelrey || "-";
+    posSupercopa = posicoesCompeticao.supercopa || "-";
+  }
+
 
   if (typeof posicoesCompeticao !== "undefined" && posicoesCompeticao !== null) {
     posLaLiga = posicoesCompeticao.laliga || "-";
@@ -554,7 +565,7 @@ function computeStats(list = []) {
 
   return { 
     v, e, d, gp, gc, pontos, aproveitamento, totalJogados,
-    posLaLiga, posChampions,
+    posLaLiga, posChampions, posCopaDelRey, posSupercopa,
     saldoGols, mediaGolsPro, jogosSemSofrerGols,
     ultimos5, maxVitorias, maxInvencivel,
     pontosCasa, aproveitamentoCasa, totalCasa,
@@ -622,6 +633,11 @@ function renderDashboard() {
       cardPosicaoHtml = statCard("Posição La Liga", s.posLaLiga, "text-gold");
     } else if (tabAtual === "champions") {
       cardPosicaoHtml = statCard("Posição Champions", s.posChampions, "text-gold");
+    } else if (tabAtual === "copas") {
+      cardPosicaoHtml = `
+        ${statCard("Posição Copa del Rey", s.posCopaDelRey, "text-gold")}
+        ${statCard("Posição Supercopa da Espanha", s.posSupercopa, "text-gold")}
+      `;
     } else {
       cardPosicaoHtml = `
         ${statCard("Posição La Liga", s.posLaLiga, "text-gold")}
