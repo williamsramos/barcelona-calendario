@@ -430,7 +430,7 @@ function renderCardLaLiga(stats) {
 function renderCardChampionsLeague(uclStats) {
   const totalPontos = uclStats.pontosConquistados !== undefined ? uclStats.pontosConquistados : (uclStats.pontos || 0);
   const statusProj = uclStats.statusClassificacao || "Zona de Classificação Direta (G-8)";
-  const posAtual = uclStats.posUclTexto || uclStats.posChampions || "1º (Fase de Liga)";
+  const posAtual = uclStats.posUclTexto || uclStats.posChampions || "2º (Fase de Liga)";
 
   return `
     <div class="col-span-full bg-gradient-to-r from-blue-950/80 via-navy-900/90 to-indigo-950/80 border border-blue-500/30 rounded-xl p-4 shadow-lg mb-2">
