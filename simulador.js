@@ -1,3 +1,26 @@
+// =========================================================================
+// CORREÇÃO DE CACHE E RODADA INICIAL (LA LIGA: 10ª / CHAMPIONS: 4ª)
+// =========================================================================
+const VERSAO_SIMULADOR_MOBILE = "v2026_r10_ucl4";
+
+if (localStorage.getItem("versao_app_simulador") !== VERSAO_SIMULADOR_MOBILE) {
+  // Limpa o cache antigo que estava travando o mobile nas rodadas erradas (3ª ou 9ª)
+  localStorage.removeItem("simulador_games");
+  localStorage.removeItem("simulador_estado");
+  localStorage.setItem("versao_app_simulador", VERSAO_SIMULADOR_MOBILE);
+}
+
+// Garante que o estado inicial comece na rodada correta caso não haja seleção salva
+if (!localStorage.getItem("current_laliga_round")) {
+  localStorage.setItem("current_laliga_round", "10"); // Começa a partir do El Clásico (10ª rodada)
+}
+
+if (!localStorage.getItem("current_ucl_round")) {
+  localStorage.setItem("current_ucl_round", "4"); // Começa a partir da 4ª rodada da Champions
+}
+
+
+
 /* ===========================================================
    Simulador de Partidas — Lógica Separada
    Salva simulações em localStorage
