@@ -12,14 +12,12 @@ if (localStorage.getItem("versao_app_simulador") !== VERSAO_SIMULADOR_MOBILE) {
 
 // Garante que o estado inicial comece na rodada correta caso não haja seleção salva
 if (!localStorage.getItem("current_laliga_round")) {
-  localStorage.setItem("current_laliga_round", "10"); // Começa a partir do El Clásico (10ª rodada)
+  localStorage.setItem("current_laliga_round", "11"); // Começa a partir do El Clásico (10ª rodada)
 }
 
 if (!localStorage.getItem("current_ucl_round")) {
   localStorage.setItem("current_ucl_round", "4"); // Começa a partir da 4ª rodada da Champions
 }
-
-
 
 /* ===========================================================
    Simulador de Partidas — Lógica Separada
@@ -32,7 +30,6 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 10ª · El Clásico", date: "25/10", time: "17:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 11ª", date: "01/11", time: "14:00", team1: "barcelona", team2: "alaves", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 12ª", date: "08/11", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 13ª", date: "22/11", time: "14:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
