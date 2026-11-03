@@ -12,7 +12,7 @@ if (localStorage.getItem("versao_app_simulador") !== VERSAO_SIMULADOR_MOBILE) {
 
 // Garante que o estado inicial comece na rodada correta caso não haja seleção salva
 if (!localStorage.getItem("current_laliga_round")) {
-  localStorage.setItem("current_laliga_round", "11"); // Começa a partir do El Clásico (10ª rodada)
+  localStorage.setItem("current_laliga_round", "12"); // Começa a partir da 12ª rodada
 }
 
 if (!localStorage.getItem("current_ucl_round")) {
@@ -30,7 +30,6 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 11ª", date: "01/11", time: "14:00", team1: "barcelona", team2: "alaves", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 12ª", date: "08/11", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 13ª", date: "22/11", time: "14:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 14ª", date: "29/11", time: "14:00", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
@@ -60,7 +59,7 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "RODADA 38ª", date: "30/05", time: "14:00", team1: "getafe", team2: "barcelona", stadium: "Coliseum Alfonso Pérez", score: "x" },
 
   // CHAMPIONS LEAGUE
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "03/11", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "03/11", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "3x1" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "08/12", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
