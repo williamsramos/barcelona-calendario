@@ -55,47 +55,51 @@ const TEAMS = {
 };
 
 
-/* ======================= DADOS DA CLASSIFICAÇÃO (3ª rodada) ======================= */
+/* ======================= DADOS DA CLASSIFICAÇÃO (4ª rodada) ======================= */
+
 const dadosClassificacao = [
-  { pos:1,  slug:'paris-saint-germain', pj:3, vit:3, e:0, der:0, gm:14, gc:5 },
-  { pos:2,  slug:'aston-villa',         pj:3, vit:3, e:0, der:0, gm:12, gc:3 },
-  { pos:3,  slug:'liverpool',           pj:3, vit:3, e:0, der:0, gm:12, gc:7 },
-  { pos:4,  slug:'real-madrid',         pj:3, vit:3, e:0, der:0, gm:10, gc:5 },
-  { pos:5,  slug:'real-betis',          pj:3, vit:3, e:0, der:0, gm:7,  gc:4 },
-  { pos:6,  slug:'stuttgart',           pj:3, vit:2, e:1, der:0, gm:7,  gc:2 },
-  { pos:7,  slug:'arsenal',             pj:3, vit:2, e:1, der:0, gm:6,  gc:2 },
-  { pos:8,  slug:'barcelona',           pj:3, vit:2, e:0, der:1, gm:11, gc:6 },
-
-  { pos:9,  slug:'como',                pj:3, vit:2, e:0, der:1, gm:10, gc:5 },
-  { pos:10, slug:'manchester-city',     pj:3, vit:2, e:0, der:1, gm:9,  gc:5 },
-  { pos:11, slug:'brugge',              pj:3, vit:2, e:0, der:1, gm:9,  gc:6 },
-  { pos:12, slug:'sporting-cp',         pj:3, vit:2, e:0, der:1, gm:7,  gc:4 },
-  { pos:13, slug:'dortmund',            pj:3, vit:2, e:0, der:1, gm:5,  gc:4 },
-  { pos:14, slug:'bayern',              pj:3, vit:1, e:2, der:0, gm:10, gc:5 },
-  { pos:15, slug:'roma',                pj:3, vit:1, e:1, der:1, gm:8,  gc:5 },
-  { pos:16, slug:'atletico-de-madrid',  pj:3, vit:1, e:1, der:1, gm:4,  gc:3 },
-  { pos:17, slug:'shakhtar',            pj:3, vit:1, e:1, der:1, gm:4,  gc:3 },
-  { pos:18, slug:'psv',                 pj:3, vit:1, e:1, der:1, gm:2,  gc:2 },
-  { pos:19, slug:'villarreal',          pj:3, vit:1, e:0, der:2, gm:8,  gc:8 },
-  { pos:20, slug:'inter',               pj:3, vit:1, e:0, der:2, gm:5,  gc:6 },
-  { pos:21, slug:'man-utd',             pj:3, vit:1, e:0, der:2, gm:5,  gc:6 },
-  { pos:22, slug:'napoli',              pj:3, vit:1, e:0, der:2, gm:5,  gc:7 },
-  { pos:23, slug:'galatasaray',         pj:3, vit:1, e:0, der:2, gm:6,  gc:9 },
-  { pos:24, slug:'lask',                pj:3, vit:1, e:0, der:2, gm:6,  gc:9 },
-
-  { pos:25, slug:'sabah',               pj:3, vit:1, e:0, der:2, gm:3,  gc:6 },
-  { pos:26, slug:'feyenoord',           pj:3, vit:1, e:0, der:2, gm:4,  gc:8 },
-  { pos:27, slug:'lens',                pj:3, vit:1, e:0, der:2, gm:3,  gc:7 },
-  { pos:28, slug:'bodo',                pj:3, vit:1, e:0, der:2, gm:4,  gc:9 },
-  { pos:29, slug:'aek',                 pj:3, vit:1, e:0, der:2, gm:3,  gc:8 },
-  { pos:30, slug:'leipzig',             pj:3, vit:1, e:0, der:2, gm:3,  gc:8 },
-  { pos:31, slug:'fenerbahce',          pj:3, vit:0, e:2, der:1, gm:3,  gc:9 },
-  { pos:32, slug:'slavia',              pj:3, vit:0, e:1, der:2, gm:4,  gc:7 },
-  { pos:33, slug:'viking',              pj:3, vit:0, e:1, der:2, gm:5,  gc:9 },
-  { pos:34, slug:'porto',               pj:3, vit:0, e:0, der:3, gm:2,  gc:6 },
-  { pos:35, slug:'lille',               pj:3, vit:0, e:0, der:3, gm:4,  gc:10 },
-  { pos:36, slug:'bratislava',          pj:3, vit:0, e:0, der:3, gm:1,  gc:13 },
+  { pos: 1,  slug:'paris-saint-germain', pj:4, vit:4, e:0, der:0, gm:20, gc:5 },
+  { pos: 2,  slug:'real-madrid',         pj:4, vit:4, e:0, der:0, gm:13, gc:7 },
+  { pos: 3,  slug:'arsenal',             pj:4, vit:3, e:1, der:0, gm:8,  gc:3 },
+  { pos: 4,  slug:'como',                pj:4, vit:3, e:0, der:1, gm:19, gc:6 },
+  { pos: 5,  slug:'barcelona',           pj:4, vit:3, e:0, der:1, gm:14, gc:6 },
+  { pos: 6,  slug:'aston-villa',         pj:4, vit:3, e:0, der:1, gm:12, gc:6 },
+  { pos: 7,  slug:'manchester-city',     pj:4, vit:3, e:0, der:1, gm:12, gc:7 },
+  { pos: 8,  slug:'liverpool',           pj:4, vit:3, e:0, der:1, gm:14, gc:10 },
+  
+  { pos: 9,  slug:'brugge',              pj:4, vit:3, e:0, der:1, gm:11, gc:7 },
+  { pos: 10, slug:'sporting-cp',         pj:4, vit:3, e:0, der:1, gm:8,  gc:4 },
+  { pos: 11, slug:'real-betis',          pj:4, vit:3, e:0, der:1, gm:8,  gc:6 },
+  { pos: 12, slug:'dortmund',            pj:4, vit:3, e:0, der:1, gm:7,  gc:5 },
+  { pos: 13, slug:'bayern',              pj:4, vit:2, e:2, der:0, gm:12, gc:5 },
+  { pos: 14, slug:'stuttgart',           pj:4, vit:2, e:1, der:1, gm:7,  gc:4 },
+  { pos: 15, slug:'inter',               pj:4, vit:2, e:0, der:2, gm:8,  gc:6 },
+  { pos: 16, slug:'lask',                pj:4, vit:2, e:0, der:2, gm:10, gc:9 },
+  { pos: 17, slug:'man-utd',             pj:4, vit:2, e:0, der:2, gm:8,  gc:8 },
+  { pos: 18, slug:'galatasaray',         pj:4, vit:2, e:0, der:2, gm:8,  gc:9 },
+  { pos: 19, slug:'fenerbahce',          pj:4, vit:1, e:2, der:1, gm:6,  gc:11 },
+  { pos: 20, slug:'roma',                pj:4, vit:1, e:1, der:2, gm:10, gc:8 },
+  { pos: 21, slug:'shakhtar',            pj:4, vit:1, e:1, der:2, gm:4,  gc:4 },
+  { pos: 22, slug:'viking',              pj:4, vit:1, e:1, der:2, gm:9,  gc:10 },
+  { pos: 23, slug:'atletico-de-madrid',  pj:4, vit:1, e:1, der:2, gm:4,  gc:5 },
+  { pos: 24, slug:'psv',                 pj:4, vit:1, e:1, der:2, gm:3,  gc:4 },
+  
+  { pos: 25, slug:'bodo',                pj:4, vit:1, e:1, der:2, gm:4,  gc:9 },
+  { pos: 26, slug:'porto',               pj:4, vit:1, e:0, der:3, gm:6,  gc:7 },
+  { pos: 27, slug:'napoli',              pj:4, vit:1, e:0, der:3, gm:6,  gc:11 },
+  { pos: 28, slug:'villarreal',          pj:4, vit:1, e:0, der:3, gm:8,  gc:14 },
+  { pos: 29, slug:'aek',                 pj:4, vit:1, e:0, der:3, gm:5,  gc:11 },
+  { pos: 30, slug:'leipzig',             pj:4, vit:1, e:0, der:3, gm:5,  gc:11 },
+  { pos: 31, slug:'sabah',               pj:4, vit:1, e:0, der:3, gm:4,  gc:10 },
+  { pos: 32, slug:'feyenoord',           pj:4, vit:1, e:0, der:3, gm:4,  gc:11 },
+  { pos: 33, slug:'lens',                pj:4, vit:1, e:0, der:3, gm:4,  gc:16 },
+  { pos: 34, slug:'slavia',              pj:4, vit:0, e:1, der:3, gm:5,  gc:9 },
+  { pos: 35, slug:'lille',               pj:4, vit:0, e:1, der:3, gm:4,  gc:10 },
+  { pos: 36, slug:'bratislava',          pj:4, vit:0, e:0, der:4, gm:1,  gc:17 }
 ].map(t => ({ ...t, pts: t.vit*3 + t.e, sg: t.gm - t.gc }));
+
+
+
 
 /* ======================= FAIXAS DE CLASSIFICAÇÃO ======================= */
 const GRUPOS = {

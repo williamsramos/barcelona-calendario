@@ -16,7 +16,7 @@ if (!localStorage.getItem("current_laliga_round")) {
 }
 
 if (!localStorage.getItem("current_ucl_round")) {
-  localStorage.setItem("current_ucl_round", "4"); // Começa a partir da 4ª rodada da Champions
+  localStorage.setItem("current_ucl_round", "5"); // Começa a partir da 5ª rodada da Champions
 }
 
 /* ===========================================================
