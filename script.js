@@ -136,7 +136,7 @@ function getTeam(slug) {
 
 function badge(slug) {
   if (slug === "barcelona") {
-    return `<div class="w-80 h-80 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
+    return `<div class="w-20 h-20 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
   }
   const t = getTeam(slug);
   return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
