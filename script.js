@@ -135,6 +135,9 @@ function getTeam(slug) {
 }
 
 function badge(slug) {
+  if (slug === "barcelona") {
+    return `<div class="w-80 h-90 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
+  }
   const t = getTeam(slug);
   return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
 }
@@ -274,11 +277,11 @@ function renderHero() {
       <div class="flex items-center gap-3 sm:gap-6 flex-1 justify-center w-full min-w-0">
         <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
           <span class="font-display text-xs sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t1.color}">${t1.abbr}</div>
+          ${badge(next.team1)}
         </div>
         <span class="font-display text-slate-500 text-sm shrink-0">vs</span>
         <div class="flex items-center gap-2 flex-1 min-w-0">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t2.color}">${t2.abbr}</div>
+          ${badge(next.team2)}
           <span class="font-display text-xs sm:text-lg text-slate-200 truncate">${t2.name}</span>
         </div>
       </div>
@@ -734,92 +737,92 @@ const JOGOS_INTERESSE_SEED = [
   [37, "2027-05-23", "", "atletico-de-madrid", "athletic-club", "laliga"],
   [38, "2027-05-30", "", "real-betis", "atletico-de-madrid", "laliga"],
 
-  // ---------------- CHAMPIONS LEAGUE (Fase de Liga - Jornadas 5 a 8) ----------------
-  // Jornada 5 (24/11/2026)
-  [5, "2026-11-24", "14:45", "bodo", "lask", "champions"],
-  [5, "2026-11-24", "14:45", "galatasaray", "aston-villa", "champions"],
-  [5, "2026-11-24", "17:00", "real-madrid", "psv", "champions"],
-  [5, "2026-11-24", "17:00", "manchester-city", "napoli", "champions"],
-  [5, "2026-11-24", "17:00", "arsenal", "dortmund", "champions"],
-  [5, "2026-11-24", "17:00", "feyenoord", "porto", "champions"],
-  [5, "2026-11-24", "17:00", "leipzig", "lens", "champions"],
-  [5, "2026-11-24", "17:00", "bratislava", "real-betis", "champions"],
-  [5, "2026-11-24", "17:00", "como", "aek", "champions"],
+     // ---------------- CHAMPIONS LEAGUE (Fase de Liga - Jornadas 5 a 8) ----------------
+  // Jornada 5 (24/11/2026)
+  [5, "2026-11-24", "14:45", "bodo", "lask", "champions"],
+  [5, "2026-11-24", "14:45", "galatasaray", "aston-villa", "champions"],
+  [5, "2026-11-24", "17:00", "real-madrid", "psv", "champions"],
+  [5, "2026-11-24", "17:00", "manchester-city", "napoli", "champions"],
+  [5, "2026-11-24", "17:00", "arsenal", "dortmund", "champions"],
+  [5, "2026-11-24", "17:00", "feyenoord", "porto", "champions"],
+  [5, "2026-11-24", "17:00", "leipzig", "lens", "champions"],
+  [5, "2026-11-24", "17:00", "bratislava", "real-betis", "champions"],
+  [5, "2026-11-24", "17:00", "como", "aek", "champions"],
 
-  // Jornada 5 (25/11/2026)
-  [5, "2026-11-25", "14:45", "slavia", "villarreal", "champions"],
-  [5, "2026-11-25", "14:45", "sabah", "barcelona", "champions"],
-  [5, "2026-11-25", "17:00", "paris-saint-germain", "roma", "champions"],
-  [5, "2026-11-25", "17:00", "inter", "stuttgart", "champions"],
-  [5, "2026-11-25", "17:00", "atletico-de-madrid", "viking", "champions"],
-  [5, "2026-11-25", "17:00", "sporting-cp", "man-utd", "champions"],
-  [5, "2026-11-25", "17:00", "brugge", "liverpool", "champions"],
-  [5, "2026-11-25", "17:00", "lille", "bayern", "champions"],
-  [5, "2026-11-25", "17:00", "shakhtar", "fenerbahce", "champions"],
+  // Jornada 5 (25/11/2026)
+  [5, "2026-11-25", "14:45", "slavia", "villarreal", "champions"],
+  [5, "2026-11-25", "14:45", "sabah", "barcelona", "champions"],
+  [5, "2026-11-25", "17:00", "paris-saint-germain", "roma", "champions"],
+  [5, "2026-11-25", "17:00", "inter", "stuttgart", "champions"],
+  [5, "2026-11-25", "17:00", "atletico-de-madrid", "viking", "champions"],
+  [5, "2026-11-25", "17:00", "sporting-cp", "man-utd", "champions"],
+  [5, "2026-11-25", "17:00", "brugge", "liverpool", "champions"],
+  [5, "2026-11-25", "17:00", "lille", "bayern", "champions"],
+  [5, "2026-11-25", "17:00", "shakhtar", "fenerbahce", "champions"],
 
-  // Jornada 6 (08/12/2026)
-  [6, "2026-12-08", "14:45", "viking", "feyenoord", "champions"],
-  [6, "2026-12-08", "14:45", "villarreal", "sabah", "champions"],
-  [6, "2026-12-08", "17:00", "bayern", "slavia", "champions"],
-  [6, "2026-12-08", "17:00", "barcelona", "manchester-city", "champions"],
-  [6, "2026-12-08", "17:00", "roma", "sporting-cp", "champions"],
-  [6, "2026-12-08", "17:00", "aston-villa", "paris-saint-germain", "champions"],
-  [6, "2026-12-08", "17:00", "man-utd", "leipzig", "champions"],
-  [6, "2026-12-08", "17:00", "napoli", "brugge", "champions"],
-  [6, "2026-12-08", "17:00", "aek", "galatasaray", "champions"],
+  // Jornada 6 (08/12/2026)
+  [6, "2026-12-08", "14:45", "viking", "feyenoord", "champions"],
+  [6, "2026-12-08", "14:45", "villarreal", "sabah", "champions"],
+  [6, "2026-12-08", "17:00", "bayern", "slavia", "champions"],
+  [6, "2026-12-08", "17:00", "barcelona", "manchester-city", "champions"],
+  [6, "2026-12-08", "17:00", "roma", "sporting-cp", "champions"],
+  [6, "2026-12-08", "17:00", "aston-villa", "paris-saint-germain", "champions"],
+  [6, "2026-12-08", "17:00", "man-utd", "leipzig", "champions"],
+  [6, "2026-12-08", "17:00", "napoli", "brugge", "champions"],
+  [6, "2026-12-08", "17:00", "aek", "galatasaray", "champions"],
 
-  // Jornada 6 (09/12/2026)
-  [6, "2026-12-09", "14:45", "real-betis", "como", "champions"],
-  [6, "2026-12-09", "14:45", "bratislava", "shakhtar", "champions"],
-  [6, "2026-12-09", "17:00", "liverpool", "porto", "champions"],
-  [6, "2026-12-09", "17:00", "arsenal", "real-madrid", "champions"],
-  [6, "2026-12-09", "17:00", "dortmund", "inter", "champions"],
-  [6, "2026-12-09", "17:00", "psv", "atletico-de-madrid", "champions"],
-  [6, "2026-12-09", "17:00", "stuttgart", "lille", "champions"],
-  [6, "2026-12-09", "17:00", "lask", "fenerbahce", "champions"],
-  [6, "2026-12-09", "17:00", "lens", "bodo", "champions"],
+  // Jornada 6 (09/12/2026)
+  [6, "2026-12-09", "14:45", "real-betis", "como", "champions"],
+  [6, "2026-12-09", "14:45", "bratislava", "shakhtar", "champions"],
+  [6, "2026-12-09", "17:00", "liverpool", "porto", "champions"],
+  [6, "2026-12-09", "17:00", "arsenal", "real-madrid", "champions"],
+  [6, "2026-12-09", "17:00", "dortmund", "inter", "champions"],
+  [6, "2026-12-09", "17:00", "psv", "atletico-de-madrid", "champions"],
+  [6, "2026-12-09", "17:00", "stuttgart", "lille", "champions"],
+  [6, "2026-12-09", "17:00", "lask", "fenerbahce", "champions"],
+  [6, "2026-12-09", "17:00", "lens", "bodo", "champions"],
 
-  // Jornada 7 (19/01/2027)
-  [7, "2027-01-19", "14:45", "bodo", "atletico-de-madrid", "champions"],
-  [7, "2027-01-19", "14:45", "galatasaray", "feyenoord", "champions"],
-  [7, "2027-01-19", "17:00", "real-madrid", "lask", "champions"],
-  [7, "2027-01-19", "17:00", "inter", "liverpool", "champions"],
-  [7, "2027-01-19", "17:00", "aston-villa", "dortmund", "champions"],
-  [7, "2027-01-19", "17:00", "porto", "slavia", "champions"],
-  [7, "2027-01-19", "17:00", "lille", "bratislava", "champions"],
-  [7, "2027-01-19", "17:00", "stuttgart", "brugge", "champions"],
-  [7, "2027-01-19", "17:00", "aek", "roma", "champions"],
+  // Jornada 7 (19/01/2027)
+  [7, "2027-01-19", "14:45", "bodo", "atletico-de-madrid", "champions"],
+  [7, "2027-01-19", "14:45", "galatasaray", "feyenoord", "champions"],
+  [7, "2027-01-19", "17:00", "real-madrid", "lask", "champions"],
+  [7, "2027-01-19", "17:00", "inter", "liverpool", "champions"],
+  [7, "2027-01-19", "17:00", "aston-villa", "dortmund", "champions"],
+  [7, "2027-01-19", "17:00", "porto", "slavia", "champions"],
+  [7, "2027-01-19", "17:00", "lille", "bratislava", "champions"],
+  [7, "2027-01-19", "17:00", "stuttgart", "brugge", "champions"],
+  [7, "2027-01-19", "17:00", "aek", "roma", "champions"],
 
-  // Jornada 7 (20/01/2027)
-  [7, "2027-01-20", "14:45", "sabah", "napoli", "champions"],
-  [7, "2027-01-20", "14:45", "fenerbahce", "villarreal", "champions"],
-  [7, "2027-01-20", "17:00", "sporting-cp", "barcelona", "champions"],
-  [7, "2027-01-20", "17:00", "man-utd", "bayern", "champions"],
-  [7, "2027-01-20", "17:00", "real-betis", "arsenal", "champions"],
-  [7, "2027-01-20", "17:00", "leipzig", "shakhtar", "champions"],
-  [7, "2027-01-20", "17:00", "como", "paris-saint-germain", "champions"],
-  [7, "2027-01-20", "17:00", "lens", "manchester-city", "champions"],
-  [7, "2027-01-20", "17:00", "viking", "psv", "champions"],
+  // Jornada 7 (20/01/2027)
+  [7, "2027-01-20", "14:45", "sabah", "napoli", "champions"],
+  [7, "2027-01-20", "14:45", "fenerbahce", "villarreal", "champions"],
+  [7, "2027-01-20", "17:00", "sporting-cp", "barcelona", "champions"],
+  [7, "2027-01-20", "17:00", "man-utd", "bayern", "champions"],
+  [7, "2027-01-20", "17:00", "real-betis", "arsenal", "champions"],
+  [7, "2027-01-20", "17:00", "leipzig", "shakhtar", "champions"],
+  [7, "2027-01-20", "17:00", "como", "paris-saint-germain", "champions"],
+  [7, "2027-01-20", "17:00", "lens", "manchester-city", "champions"],
+  [7, "2027-01-20", "17:00", "viking", "psv", "champions"],
 
-  // Jornada 8 (27/01/2027)
-  [8, "2027-01-27", "17:00", "bayern", "real-betis", "champions"],
-  [8, "2027-01-27", "17:00", "paris-saint-germain", "galatasaray", "champions"],
-  [8, "2027-01-27", "17:00", "liverpool", "lens", "champions"],
-  [8, "2027-01-27", "17:00", "manchester-city", "sporting-cp", "champions"],
-  [8, "2027-01-27", "17:00", "arsenal", "sabah", "champions"],
-  [8, "2027-01-27", "17:00", "barcelona", "como", "champions"],
-  [8, "2027-01-27", "17:00", "atletico-de-madrid", "fenerbahce", "champions"],
-  [8, "2027-01-27", "17:00", "dortmund", "aek", "champions"],
-  [8, "2027-01-27", "17:00", "roma", "lille", "champions"],
-  [8, "2027-01-27", "17:00", "brugge", "bodo", "champions"],
-  [8, "2027-01-27", "17:00", "psv", "stuttgart", "champions"],
-  [8, "2027-01-27", "17:00", "feyenoord", "leipzig", "champions"],
-  [8, "2027-01-27", "17:00", "napoli", "viking", "champions"],
-  [8, "2027-01-27", "17:00", "villarreal", "man-utd", "champions"],
-  [8, "2027-01-27", "17:00", "shakhtar", "real-madrid", "champions"],
-  [8, "2027-01-27", "17:00", "slavia", "aston-villa", "champions"],
-  [8, "2027-01-27", "17:00", "bratislava", "inter", "champions"],
-  [8, "2027-01-27", "17:00", "lask", "porto", "champions"]
+  // Jornada 8 (27/01/2027)
+  [8, "2027-01-27", "17:00", "bayern", "real-betis", "champions"],
+  [8, "2027-01-27", "17:00", "paris-saint-germain", "galatasaray", "champions"],
+  [8, "2027-01-27", "17:00", "liverpool", "lens", "champions"],
+  [8, "2027-01-27", "17:00", "manchester-city", "sporting-cp", "champions"],
+  [8, "2027-01-27", "17:00", "arsenal", "sabah", "champions"],
+  [8, "2027-01-27", "17:00", "barcelona", "como", "champions"],
+  [8, "2027-01-27", "17:00", "atletico-de-madrid", "fenerbahce", "champions"],
+  [8, "2027-01-27", "17:00", "dortmund", "aek", "champions"],
+  [8, "2027-01-27", "17:00", "roma", "lille", "champions"],
+  [8, "2027-01-27", "17:00", "brugge", "bodo", "champions"],
+  [8, "2027-01-27", "17:00", "psv", "stuttgart", "champions"],
+  [8, "2027-01-27", "17:00", "feyenoord", "leipzig", "champions"],
+  [8, "2027-01-27", "17:00", "napoli", "viking", "champions"],
+  [8, "2027-01-27", "17:00", "villarreal", "man-utd", "champions"],
+  [8, "2027-01-27", "17:00", "shakhtar", "real-madrid", "champions"],
+  [8, "2027-01-27", "17:00", "slavia", "aston-villa", "champions"],
+  [8, "2027-01-27", "17:00", "bratislava", "inter", "champions"],
+  [8, "2027-01-27", "17:00", "lask", "porto", "champions"]
 ].map(([rodada, date, hora, mandante, visitante, comp]) => normalizarJogoInteresse({
   id: `r${rodada}_${mandante}_${visitante}`,
   rodada, date, hora, mandante, visitante, comp,
@@ -898,13 +901,13 @@ function renderCardInteresse(j) {
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
         <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
-          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate text-right">${t1.name}</span>
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate text-right">${getTeam(j.mandante).name}</span>
           ${badge(j.mandante)}
         </div>
         <div class="shrink-0 px-1 sm:px-2">${centro}</div>
         <div class="flex items-center gap-2 flex-1 min-w-0">
           ${badge(j.visitante)}
-          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate">${t2.name}</span>
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate">${getTeam(j.visitante).name}</span>
         </div>
       </div>
       <p class="text-[10px] sm:text-[11px] text-slate-500 mt-3 flex items-center gap-1.5 truncate">
