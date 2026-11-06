@@ -59,7 +59,7 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "RODADA 38ª", date: "30/05", time: "14:00", team1: "getafe", team2: "barcelona", stadium: "Coliseum Alfonso Pérez", score: "x" },
 
   // CHAMPIONS LEAGUE
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "0x6" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "08/12", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "27/01", time: "17:00", team1: "como", team2: "barcelona", stadium: "Camp Nou", score: "x" },
