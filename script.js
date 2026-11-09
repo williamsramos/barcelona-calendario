@@ -19,9 +19,9 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 9ª", date: "2026-10-17", time: "13:30", team1: "real-betis", team2: "barcelona", stadium: "La Cartuja de Sevilla", score: "2x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 10ª · El Clásico", date: "2026-10-25", time: "17:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "1x2" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 11ª", date: "2026-11-01", time: "14:00", team1: "barcelona", team2: "alaves", stadium: "Camp Nou", score: "6x1" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 12ª", date: "2026-11-08", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 13ª", date: "2026-11-22", time: "14:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 14ª", date: "2026-11-29", time: "14:00", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 12ª", date: "2026-11-08", time: "17:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "1x2" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 13ª", date: "2026-11-22", time: "10:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 14ª", date: "2026-11-29", time: "12:15", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 15ª", date: "2026-12-06", time: "14:00", team1: "barcelona", team2: "celta-vigo", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 16ª", date: "2026-12-13", time: "14:00", team1: "malaga", team2: "barcelona", stadium: "La Rosaleda", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 17ª", date: "2026-12-20", time: "14:00", team1: "barcelona", team2: "real-sociedad", stadium: "Camp Nou", score: "x" },
@@ -32,7 +32,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 20ª", date: "2027-01-17", time: "14:00", team1: "barcelona", team2: "elche", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 21ª", date: "2027-01-24", time: "14:00", team1: "alaves", team2: "barcelona", stadium: "Mendizorroza", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 22ª", date: "2027-01-31", time: "14:00", team1: "barcelona", team2: "valencia", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 23ª", date: "2027-02-07", time: "14:00", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 23ª", date: "2026-12-02", time: "14:00", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 24ª", date: "2027-02-14", time: "14:00", team1: "villarreal", team2: "barcelona", stadium: "Estadio de la Cerámica", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 25ª", date: "2027-02-21", time: "14:00", team1: "barcelona", team2: "levante", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 26ª", date: "2027-02-28", time: "14:00", team1: "athletic-club", team2: "barcelona", stadium: "San Mamés", score: "x" },
@@ -53,11 +53,15 @@ const defaultGames = [
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "2026-09-09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "5x1" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "1x4" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "4x2" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "3x0" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-24", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "2026-12-08", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "2027-01-20", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "2027-01-27", time: "17:00", team1: "barcelona", team2: "como", stadium: "Camp Nou", score: "x" },
+
+
+    // ---------------- COPAS (SUPERCOPA DA ESPAÑA E COPA DEL REY)----------------
+  { id: cryptoId(), comp: "copas", round: "supercopa - semifinal", date: "2027-02-02", time: "", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Ataturk Olimíyart Stadi - Campo Neutro", score: "x" },
 
   // ---------------- AMISTOSOS / OUTROS ----------------
   { id: cryptoId(), comp: "amistoso", round: "Troféu Joan Gamper", date: "2026-08-19", time: "", team1: "barcelona", team2: "al-ahly", stadium: "Camp Nou", score: "2x1" },
@@ -136,7 +140,7 @@ function getTeam(slug) {
 
 function badge(slug) {
   if (slug === "barcelona") {
-    return `<div class="w-20 h-20 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
+    return `<div class="w-80 h-80 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
   }
   const t = getTeam(slug);
   return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
