@@ -143,7 +143,7 @@ const dadosClassificacaoInicial = [
 
 
 // Aumente este valor SEMPRE que atualizar dadosClassificacaoInicial
-   const CLASSIFICACAO_VERSAO = "2026-11-03-r11";
+   const CLASSIFICACAO_VERSAO = "2026-11-08-r12";
 
 let dadosClassificacao = (() => {
   const versaoSalva = LocalStorage.get('laliga_classificacao_versao');
