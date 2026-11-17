@@ -140,7 +140,7 @@ function getTeam(slug) {
 
 function badge(slug) {
   if (slug === "barcelona") {
-    return `<div class="w-80 h-80 sm:w-11 sm:h-11 rounded-full flex items-center justify-center "><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`; //shrink-0 bg-white/10 p-1 shadow-inner
+    return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center shrink-0 overflow-hidden"><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`;
   }
   const t = getTeam(slug);
   return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
@@ -270,28 +270,33 @@ function renderHero() {
   const t1 = getTeam(next.team1), t2 = getTeam(next.team2);
 
   box.innerHTML = `
-    <div class="ticket next-game rise-in rounded-2xl border border-navy-600/60 px-4 sm:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
-      <div class="flex flex-col items-center sm:items-start gap-1 shrink-0">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-gold pulse-dot"></span>
-          <span class="text-[11px] font-bold tracking-[0.2em] text-gold uppercase">Próximo jogo</span>
+    <div class="ticket next-game rise-in rounded-xl border border-navy-600/60 px-3 sm:px-8 py-3 sm:py-6 flex flex-row items-center justify-between gap-2 sm:gap-8 overflow-hidden">
+      <!-- Lado esquerdo: Próximo jogo + Contagem -->
+      <div class="flex flex-col items-start gap-0.5 shrink-0">
+        <div class="flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-gold pulse-dot"></span>
+          <span class="text-[8px] sm:text-[11px] font-bold tracking-[0.1em] text-gold uppercase">Próximo</span>
         </div>
-        <div id="heroCountdown" class="mt-1"></div>
+        <div id="heroCountdown" class="mt-0.5 scale-90 sm:scale-100 origin-top-left"></div>
       </div>
-      <div class="flex items-center gap-3 sm:gap-6 flex-1 justify-center w-full min-w-0">
-        <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
-          <span class="font-display text-xs sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
+
+      <!-- Centro: Times e Escudos -->
+      <div class="flex items-center gap-1.5 sm:gap-6 flex-1 justify-center min-w-0 px-1">
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0 justify-end">
+          <span class="font-display text-[11px] sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
           ${badge(next.team1)}
         </div>
-        <span class="font-display text-slate-500 text-sm shrink-0">vs</span>
-        <div class="flex items-center gap-2 flex-1 min-w-0">
+        <span class="font-display text-slate-500 text-xs sm:text-sm shrink-0">vs</span>
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
           ${badge(next.team2)}
-          <span class="font-display text-xs sm:text-lg text-slate-200 truncate">${t2.name}</span>
+          <span class="font-display text-[11px] sm:text-lg text-slate-200 truncate">${t2.name}</span>
         </div>
       </div>
-      <div class="text-center sm:text-right shrink-0">
-        <p class="font-mono text-xs text-slate-400">${fmtLongDate(next.date)} · ${next.time || "--:--"}</p>
-        <p class="text-[11px] text-slate-500 mt-0.5">${next.stadium || "Estádio a definir"}</p>
+
+      <!-- Lado direito: Data e Estádio -->
+      <div class="text-right shrink-0">
+        <p class="font-mono text-[9px] sm:text-xs text-slate-400">${fmtLongDate(next.date)} · ${next.time || "--:--"}</p>
+        <p class="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 truncate max-w-[80px] sm:max-w-none">${next.stadium || "Estádio a definir"}</p>
       </div>
     </div>`;
 
