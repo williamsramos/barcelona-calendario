@@ -511,7 +511,7 @@ function renderCard(g, isNext) {
       <span class="font-mono text-[9px] text-slate-400 uppercase leading-tight">${mesAno}</span>
     </div>
     <div class="perforation my-2 sm:my-3"></div>
-    <div class="flex-1 px-2.5 sm:px-5 py-3 sm:py-4 min-w-0">
+    <div class="flex-1 px-3 sm:px-5 py-3 sm:py-4 min-w-0">
       <div class="flex items-center justify-between mb-2 sm:mb-3">
         <p class="text-[9px] sm:text-[11px] font-semibold text-gold uppercase tracking-wider truncate mr-1">
           ${compLabel} <span class="text-slate-500 font-normal">• ${g.round}</span>
@@ -889,8 +889,8 @@ function renderCardInteresse(j) {
   <div class="ticket rise-in rounded-xl overflow-hidden flex border border-navy-600/60 group mb-3">
     <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40 text-center">
       <span class="font-mono text-[10px] text-slate-400 uppercase leading-tight">${diaSemana},</span>
-      <span class="font-display text-2xl sm:text-2xl text-white font-bold leading-none my-1">${diaNum}</span>
-      <span class="font-mono text-[9px] text-slate-400 uppercase leading-tight">${mesAno}</span>
+      <span class="font-display text-2xl sm:text-2xl text-white font-bold leading-none my-1">${dia}</span>
+      <span class="font-mono text-[9px] text-slate-400 uppercase leading-tight">${dia} DE ${mes.toUpperCase()}.</span>
     </div>
     <div class="perforation my-3"></div>
     <div class="flex-1 px-3 sm:px-5 py-4 min-w-0">
