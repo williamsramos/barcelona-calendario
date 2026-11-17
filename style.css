@@ -74,57 +74,66 @@ body {
   flex-shrink: 0;
 }
 
-/* ---------- Correção responsiva rigorosa para mobile ---------- */
+
+/* ---------- Correção responsiva definitiva para os cards de partidas no Mobile ---------- */
 @media (max-width: 640px) {
-  /* Reduz drasticamente o padding geral do ticket */
+  /* Força o ticket a ter altura automática e padding compacto */
   .ticket {
-    padding: 6px !important;
+    padding: 12px !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
-  /* Compacta a coluna da data à esquerda */
-  .ticket > div:first-child {
-    width: 52px !important;
-    padding: 4px !important;
-  }
-  
-  .ticket > div:first-child span {
-    font-size: 8px !important;
-  }
-  
-  .ticket > div:first-child span:nth-child(2) {
-    font-size: 14px !important;
+  /* Corrige o layout interno dos dados do jogo para ficarem alinhados horizontalmente */
+  .ticket .flex, 
+  .ticket > div {
+    box-sizing: border-box;
   }
 
-  /* Compacta o conteúdo interno direito */
-  .ticket .flex-1 {
-    padding-left: 6px !important;
-    padding-right: 6px !important;
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
+  /* Garante que o corpo central da partida (Times, Escudos e Horário) fique em linha */
+  .match-body,
+  .ticket .flex.items-center.justify-between {
+    flex-direction: row !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 4px 0 !important;
   }
 
-  /* Força limite de largura para os nomes dos times não empurrarem o layout */
-  .ticket span.text-xs, 
-  .ticket span.text-sm,
+  /* Trunca corretamente o nome dos times no mobile para nunca quebrar o layout ("B..") */
   .team-name,
-  .team-name-label {
+  .team-name-label,
+  .ticket span.truncate {
     max-width: 75px !important;
-    font-size: 11px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+    display: inline-block !important;
+    font-size: 11px !important;
   }
 
-  /* Reduz o tamanho das badges / escudos no mobile */
-  .ticket img,
-  .ticket .w-9, .ticket .w-11 {
-    width: 26px !important;
-    height: 26px !important;
+  /* Ajusta o espaçamento da barra de data à esquerda no mobile */
+  .ticket .shrink-0.flex-col,
+  .ticket > div:first-child {
+    width: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
-  /* Ajusta tamanho da fonte do placar / hora no mobile */
-  .ticket .font-display {
-    font-size: 12px !important;
+  /* Força o card a ter altura automática e padding enxuto */
+  .ticket, .match-card {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 10px !important;
+  }
+
+  /* Garante que o corpo do card fique em linha horizontal no mobile */
+  .match-body, 
+  .ticket .flex {
+    flex-direction: row !important;
+    align-items: center !important;
   }
 }
 
