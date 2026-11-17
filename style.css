@@ -40,16 +40,16 @@ body {
 .ticket::after {
   content: "";
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   background: #080D1A;
   border-radius: 9999px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
 }
-.ticket::before { left: -9px; }
-.ticket::after  { right: -9px; }
+.ticket::before { left: -7px; }
+.ticket::after  { right: -7px; }
 
 .perforation {
   background-image: repeating-linear-gradient(to bottom, transparent 0 6px, #2A3B5E 6px 12px);
@@ -63,47 +63,68 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
 
-/* ---------- Correção responsiva para nomes de times em telas mobile ---------- */
+/* ---------- Correção responsiva rigorosa para mobile ---------- */
 @media (max-width: 640px) {
-  /* Reduz o padding geral do ticket no mobile */
+  /* Reduz drasticamente o padding geral do ticket */
   .ticket {
-    padding: 10px !important;
+    padding: 6px !important;
   }
 
-  /* Deixa a coluna da data à esquerda mais compacta */
-  .ticket .shrink-0.flex-col {
-    width: 60px !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
+  /* Compacta a coluna da data à esquerda */
+  .ticket > div:first-child {
+    width: 52px !important;
+    padding: 4px !important;
+  }
+  
+  .ticket > div:first-child span {
+    font-size: 8px !important;
+  }
+  
+  .ticket > div:first-child span:nth-child(2) {
+    font-size: 14px !important;
   }
 
-  /* Reduz o espaçamento e padding interno do conteúdo direito */
-  .ticket .flex-1.px-3, 
-  .ticket .flex-1.px-5 {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+  /* Compacta o conteúdo interno direito */
+  .ticket .flex-1 {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
   }
 
-  /* Trunca corretamente o nome do Barcelona ("B..") para não quebrar */
+  /* Força limite de largura para os nomes dos times não empurrarem o layout */
+  .ticket span.text-xs, 
+  .ticket span.text-sm,
+  .team-name,
   .team-name-label {
-    max-width: 68px !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
+    max-width: 75px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Reduz o tamanho das badges / escudos no mobile */
+  .ticket img,
+  .ticket .w-9, .ticket .w-11 {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  /* Ajusta tamanho da fonte do placar / hora no mobile */
+  .ticket .font-display {
+    font-size: 12px !important;
   }
 }
 
@@ -258,7 +279,7 @@ a, button, input, select, textarea {
 
 /* Card principal da partida */
 .match-card {
-  background-color: #0f172a; /* navy-900 */
+  background-color: #0f172a;
   border: 1px solid #1e293b;
   border-radius: 1rem;
   padding: 1rem;
@@ -330,16 +351,4 @@ a, button, input, select, textarea {
   border-radius: 0.5rem;
   color: #ffffff;
   font-weight: bold;
-}
-
-/* Ajustes finos para telas menores (Móbile) */
-@media (max-width: 640px) {
-  .team-name {
-    font-size: 0.75rem;
-  }
-  
-  .score-input {
-    width: 2rem;
-    height: 2rem;
-  }
 }
