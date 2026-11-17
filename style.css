@@ -1,4 +1,4 @@
-   /* ===========================================================
+/* ===========================================================
    FC Barcelona Portal — Estilos Globais
    Tailwind config centralizado + estilos customizados
    =========================================================== */
@@ -76,15 +76,30 @@ body {
 
 /* ---------- Correção responsiva para nomes de times em telas mobile ---------- */
 @media (max-width: 640px) {
-  /* Reduz padding interno do ticket para ganhar espaço */
-  .ticket .flex-1.px-3 {
+  /* Reduz o padding geral do ticket no mobile */
+  .ticket {
+    padding: 10px !important;
+  }
+
+  /* Deixa a coluna da data à esquerda mais compacta */
+  .ticket .shrink-0.flex-col {
+    width: 60px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  /* Reduz o espaçamento e padding interno do conteúdo direito */
+  .ticket .flex-1.px-3, 
+  .ticket .flex-1.px-5 {
     padding-left: 8px !important;
     padding-right: 8px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
   }
-  
-  /* Força limite estrito para o nome do time não quebrar o layout */
+
+  /* Trunca corretamente o nome do Barcelona ("B..") para não quebrar */
   .team-name-label {
-    max-width: 72px !important;
+    max-width: 68px !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
