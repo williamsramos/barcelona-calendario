@@ -497,13 +497,18 @@ function renderCard(g, isNext) {
   const t1 = getTeam(g.team1), t2 = getTeam(g.team2);
   const compLabel = COMPS.find(c => c.id === g.comp || (c.match && c.match.includes(g.comp)))?.label ?? g.comp;
 
+  const dt = parseDate(g.date);
+  const diaSemana = dt.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").toUpperCase();
+  const diaNum = dt.getDate();
+  const mesAno = `${String(dt.getDate()).padStart(2, '0')} DE ${dt.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").toUpperCase()}.`;
+
   return `
   <div class="ticket ${isNext ? "next-game" : ""} rise-in rounded-xl overflow-hidden flex border border-navy-600/60 group mb-3">
-    <!-- Bloco da Data (Esquerda) -->
-    <div class="w-16 sm:w-28 shrink-0 flex flex-col items-center justify-center py-2 sm:py-4 bg-navy-950/40">
-      <span class="font-mono text-[9px] sm:text-[10px] text-slate-500 uppercase">${fmtLongDate(g.date).split(" ")[0]}</span>
-      <span class="font-display text-lg sm:text-2xl text-white font-semibold leading-none mt-0.5">${parseDate(g.date).getDate()}</span>
-      <span class="font-mono text-[9px] sm:text-[10px] text-slate-500 uppercase mt-0.5">${fmtLongDate(g.date).split(" ").slice(1).join(" ")}</span>
+    <!-- Bloco da Data (Esquerda) idêntico ao modelo correto -->
+    <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40 text-center">
+      <span class="font-mono text-[10px] text-slate-400 uppercase leading-tight">${diaSemana},</span>
+      <span class="font-display text-2xl sm:text-2xl text-white font-bold leading-none my-1">${diaNum}</span>
+      <span class="font-mono text-[9px] text-slate-400 uppercase leading-tight">${mesAno}</span>
     </div>
     <div class="perforation my-2 sm:my-3"></div>
     <div class="flex-1 px-2.5 sm:px-5 py-3 sm:py-4 min-w-0">
@@ -870,10 +875,10 @@ function rotuloRodadas(rodadas) {
 function renderCardInteresse(j) {
   const t1 = getTeam(j.mandante), t2 = getTeam(j.visitante);
   const temPlacar = j.m !== "" && j.v !== "";
-  const longa = j.date ? fmtLongDate(j.date) : "";
-  const diaSemana = longa.split(" ")[0] || "";
-  const mes = longa.split(" ").slice(1).join(" ");
-  const dia = j.date ? parseDate(j.date).getDate() : "--";
+  const dt = j.date ? parseDate(j.date) : new Date();
+  const diaSemana = dt.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "").toUpperCase();
+  const diaNum = dt.getDate();
+  const mesAno = `${String(dt.getDate()).padStart(2, '0')} DE ${dt.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").toUpperCase()}.`;
   const compRotulo = j.comp === "champions" ? "Champions League" : "La Liga";
 
   const centro = temPlacar
@@ -882,10 +887,10 @@ function renderCardInteresse(j) {
 
   return `
   <div class="ticket rise-in rounded-xl overflow-hidden flex border border-navy-600/60 group mb-3">
-    <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40">
-      <span class="font-mono text-[10px] text-slate-500 uppercase">${diaSemana}</span>
-      <span class="font-display text-xl sm:text-2xl text-white font-semibold leading-none mt-0.5">${dia}</span>
-      <span class="font-mono text-[10px] text-slate-500 uppercase mt-0.5">${mes}</span>
+    <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40 text-center">
+      <span class="font-mono text-[10px] text-slate-400 uppercase leading-tight">${diaSemana},</span>
+      <span class="font-display text-2xl sm:text-2xl text-white font-bold leading-none my-1">${diaNum}</span>
+      <span class="font-mono text-[9px] text-slate-400 uppercase leading-tight">${mesAno}</span>
     </div>
     <div class="perforation my-3"></div>
     <div class="flex-1 px-3 sm:px-5 py-4 min-w-0">
@@ -1258,7 +1263,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const oppSlug = slugify(oppName);
     const team1 = mandoSelecionado === "casa" ? "barcelona" : oppSlug;
-    const team2 = mandoSelecionado === "casa" ? oppSlug : "barcelona";
+    const team2 = mandosSelecionado === "casa" ? oppSlug : "barcelona";
 
     if (!score) score = "x";
 
