@@ -12,7 +12,7 @@ if (localStorage.getItem("versao_app_simulador") !== VERSAO_SIMULADOR_MOBILE) {
 
 // Garante que o estado inicial comece na rodada correta caso não haja seleção salva
 if (!localStorage.getItem("current_laliga_round")) {
-  localStorage.setItem("current_laliga_round", "12"); // Começa a partir da 12ª rodada
+  localStorage.setItem("current_laliga_round", "14"); // Começa a partir da 12ª rodada
 }
 
 if (!localStorage.getItem("current_ucl_round")) {
@@ -30,9 +30,8 @@ function cryptoId() {
 
 let games = [
   // LA LIGA · 1º TURNO
-  { id: cryptoId(), comp: "laliga", round: "RODADA 12ª", date: "08/11", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "1x3" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 13ª", date: "22/11", time: "14:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 14ª", date: "29/11", time: "14:00", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "RODADA 23ª", date: "02/12", time: "17:30", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 15ª", date: "06/12", time: "14:00", team1: "barcelona", team2: "celta-vigo", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 16ª", date: "13/12", time: "14:00", team1: "malaga", team2: "barcelona", stadium: "La Rosaleda", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 17ª", date: "20/12", time: "14:00", team1: "barcelona", team2: "real-sociedad", stadium: "Camp Nou", score: "x" },
@@ -41,7 +40,7 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "RODADA 20ª", date: "17/01", time: "14:00", team1: "barcelona", team2: "elche", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 21ª", date: "24/01", time: "14:00", team1: "alaves", team2: "barcelona", stadium: "Mendizorroza", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 22ª", date: "31/01", time: "14:00", team1: "barcelona", team2: "valencia", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "RODADA 23ª", date: "07/02", time: "14:00", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
+
   { id: cryptoId(), comp: "laliga", round: "RODADA 24ª", date: "14/02", time: "14:00", team1: "villarreal", team2: "barcelona", stadium: "Estadio de la Cerámica", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 25ª", date: "21/02", time: "14:00", team1: "barcelona", team2: "levante", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "RODADA 26ª", date: "28/02", time: "14:00", team1: "athletic-club", team2: "barcelona", stadium: "San Mamés", score: "x" },
@@ -59,7 +58,7 @@ let games = [
   { id: cryptoId(), comp: "laliga", round: "RODADA 38ª", date: "30/05", time: "14:00", team1: "getafe", team2: "barcelona", stadium: "Coliseum Alfonso Pérez", score: "x" },
 
   // CHAMPIONS LEAGUE
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "24/11", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "0x6" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "25/11", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "0x6" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "08/12", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "20/01", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "27/01", time: "17:00", team1: "como", team2: "barcelona", stadium: "Camp Nou", score: "x" },

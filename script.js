@@ -1,9 +1,13 @@
 /* ===========================================================
-   Calendário Blaugrana — Lógica da aplicação unificada
+   Calendário Blaugrana — Lógica da aplicação
    Dados salvos via localStorage e estatísticas completas
    =========================================================== */
 
 function cryptoId() { return 'g_' + Math.random().toString(36).slice(2, 10); }
+
+function isGamePlayed(score) {
+  return Boolean(score && String(score).trim().toLowerCase() !== "x");
+}
 
 // Dados iniciais padrão caso o localStorage esteja vazio
 const defaultGames = [
@@ -19,9 +23,9 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 9ª", date: "2026-10-17", time: "13:30", team1: "real-betis", team2: "barcelona", stadium: "La Cartuja de Sevilla", score: "2x5" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 10ª · El Clásico", date: "2026-10-25", time: "17:00", team1: "barcelona", team2: "real-madrid", stadium: "Camp Nou", score: "1x2" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 11ª", date: "2026-11-01", time: "14:00", team1: "barcelona", team2: "alaves", stadium: "Camp Nou", score: "6x1" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 12ª", date: "2026-11-08", time: "17:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "1x2" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 13ª", date: "2026-11-22", time: "10:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 14ª", date: "2026-11-29", time: "12:15", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 12ª", date: "2026-11-08", time: "14:00", team1: "atletico-de-madrid", team2: "barcelona", stadium: "Cívitas Metropolitano", score: "1x2" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 13ª", date: "2026-11-22", time: "14:00", team1: "barcelona", team2: "villarreal", stadium: "Camp Nou", score: "3x2" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 14ª", date: "2026-11-29", time: "14:00", team1: "deportivo-a-coruna", team2: "barcelona", stadium: "Riazor", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 15ª", date: "2026-12-06", time: "14:00", team1: "barcelona", team2: "celta-vigo", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 16ª", date: "2026-12-13", time: "14:00", team1: "malaga", team2: "barcelona", stadium: "La Rosaleda", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 17ª", date: "2026-12-20", time: "14:00", team1: "barcelona", team2: "real-sociedad", stadium: "Camp Nou", score: "x" },
@@ -32,7 +36,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "laliga", round: "Rodada 20ª", date: "2027-01-17", time: "14:00", team1: "barcelona", team2: "elche", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 21ª", date: "2027-01-24", time: "14:00", team1: "alaves", team2: "barcelona", stadium: "Mendizorroza", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 22ª", date: "2027-01-31", time: "14:00", team1: "barcelona", team2: "valencia", stadium: "Camp Nou", score: "x" },
-  { id: cryptoId(), comp: "laliga", round: "Rodada 23ª", date: "2026-12-02", time: "14:00", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
+  { id: cryptoId(), comp: "laliga", round: "Rodada 23ª", date: "2026-12-02", time: "17:30", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 24ª", date: "2027-02-14", time: "14:00", team1: "villarreal", team2: "barcelona", stadium: "Estadio de la Cerámica", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 25ª", date: "2027-02-21", time: "14:00", team1: "barcelona", team2: "levante", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "laliga", round: "Rodada 26ª", date: "2027-02-28", time: "14:00", team1: "athletic-club", team2: "barcelona", stadium: "San Mamés", score: "x" },
@@ -52,16 +56,15 @@ const defaultGames = [
   // ---------------- CHAMPIONS LEAGUE · FASE DE LIGA ----------------
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 1", date: "2026-09-09", time: "13:45", team1: "barcelona", team2: "feyenoord", stadium: "Camp Nou", score: "5x1" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "1x4" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "4x2" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "1x2" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "3x0" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-24", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-25", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "2026-12-08", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "2027-01-20", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "2027-01-27", time: "17:00", team1: "barcelona", team2: "como", stadium: "Camp Nou", score: "x" },
 
-
-    // ---------------- COPAS (SUPERCOPA DA ESPAÑA E COPA DEL REY)----------------
-  { id: cryptoId(), comp: "copas", round: "supercopa - semifinal", date: "2027-02-02", time: "", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Ataturk Olimíyart Stadi - Campo Neutro", score: "x" },
+    // ---------------- COPA ----------------
+  { id: cryptoId(), comp: "supercopa", round: "Supercopa da España", date: "2027-02-02", time: "16:00", team1: "barcelona", team2: "atletico-de-madrid", stadium: "Volwswagen Arena Istambul", score: "x" },
 
   // ---------------- AMISTOSOS / OUTROS ----------------
   { id: cryptoId(), comp: "amistoso", round: "Troféu Joan Gamper", date: "2026-08-19", time: "", team1: "barcelona", team2: "al-ahly", stadium: "Camp Nou", score: "2x1" },
@@ -129,6 +132,55 @@ const TEAMS = {
   "fenerbahce":        { name: "Fenerbahçe",        abbr: "FEN", color: "#FFED00" }
 };
 
+function gerarBadgeTime(slugTime) {
+  const info = TEAMS[slugTime] || { abbr: "FC", color: "#3B82F6" };
+
+  // Define texto escuro para fundo muito claro (ex: Villarreal)
+  const corTexto = info.color === "#FFE667" ? "#1E293B" : "#FFFFFF";
+
+  return `
+    <span class="badge-time" style="background-color: ${info.color}; color: ${corTexto};">
+      ${info.abbr}
+    </span>
+  `;
+}
+
+
+
+// Exemplo de inclusão dentro da geração de linhas da tabela
+function criarLinhaTabela(item) {
+  return `
+    <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+      <td class="py-3 px-2 text-center text-slate-400 font-bold">${item.pos}º</td>
+      <td class="py-3 px-2 flex items-center gap-3 font-semibold text-white">
+        ${gerarBadgeTime(item.slug)}
+        <span>${item.clube}</span>
+      </td>
+      <td class="py-3 px-2 text-center font-bold text-amber-400">${item.pts}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.pj}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.vit}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.e}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.der}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.gm}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.gc}</td>
+      <td class="py-3 px-2 text-center text-slate-300">${item.sg}</td>
+    </tr>
+  `;
+}
+
+const posicoesCompeticao = {
+  laliga: "1º",
+  champions: "5º",
+  copadelrey: "-",
+  supercopa: "-",
+  todos: "1º"
+};
+
+function slugify(str) {
+  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 function getTeam(slug) {
   if (TEAMS[slug]) return TEAMS[slug];
   const name = slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
@@ -136,19 +188,6 @@ function getTeam(slug) {
   let hash = 0; for (const c of slug) hash = c.charCodeAt(0) + ((hash << 5) - hash);
   const hue = Math.abs(hash) % 360;
   return { name, abbr, color: `hsl(${hue} 55% 40%)` };
-}
-
-function badge(slug) {
-  if (slug === "barcelona") {
-    return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center shrink-0 overflow-hidden"><img src="logo_barça.svg" alt="Barcelona" class="w-full h-full object-contain"></div>`;
-  }
-  const t = getTeam(slug);
-  return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
-}
-
-function slugify(str) {
-  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-            .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 /* ======================= COMPETIÇÕES / ABAS ======================= */
@@ -162,16 +201,17 @@ const COMPS = [
 let activeTab = "todos";
 let activeSub = "todos";
 let editingId = null;
-
-function renderClassificacao() {}
+let mandoSelecionado = "casa";
 
 /* ======================= DATAS CORRIGIDAS ======================= */
 function parseDate(dstr) {
   if (!dstr) return new Date();
+  
   if (dstr.includes("-")) {
     const [year, m, d] = dstr.split("-").map(Number);
     return new Date(year, m - 1, d);
   }
+  
   const parts = dstr.split("/").map(Number);
   const d = parts[0];
   const m = parts[1];
@@ -192,6 +232,12 @@ function fmtInputDate(dstr) {
   return `${yyyy}-${mm}-${dd}`;
 }
 
+function today() {
+  const t = new Date();
+  return new Date(t.getFullYear(), t.getMonth(), t.getDate());
+}
+
+/* ======================= FILTROS POR ABA ======================= */
 function gamesForTab(tabId) {
   if (tabId === "todos") return games;
   const comp = COMPS.find(c => c.id === tabId);
@@ -241,15 +287,9 @@ function startCountdown(nextGameDate, timeStr) {
 }
 
 /* ======================= HERO / PRÓXIMO JOGO ======================= */
-function isGamePlayed(score) {
-  if (!score) return false;
-  const s = score.trim().toLowerCase();
-  return s !== "" && s !== "x" && s !== "-";
-}
-
 function getNextGame() {
   const pendentes = games
-    .filter(g => !isGamePlayed(g.score))
+    .filter(g => !g.score || g.score.trim().toLowerCase() === "x")
     .sort((a, b) => parseDate(a.date) - parseDate(b.date));
   return pendentes[0] || null;
 }
@@ -267,54 +307,182 @@ function renderHero() {
   }
   
   box.classList.remove("hidden");
+
   const t1 = getTeam(next.team1), t2 = getTeam(next.team2);
 
   box.innerHTML = `
-    <div class="ticket next-game rise-in rounded-xl border border-navy-600/60 px-3 sm:px-8 py-3 sm:py-6 flex flex-row items-center justify-between gap-2 sm:gap-8 overflow-hidden">
-      <!-- Lado esquerdo: Próximo jogo + Contagem -->
-      <div class="flex flex-col items-start gap-0.5 shrink-0">
-        <div class="flex items-center gap-1">
-          <span class="w-2 h-2 rounded-full bg-gold pulse-dot"></span>
-          <span class="text-[8px] sm:text-[11px] font-bold tracking-[0.1em] text-gold uppercase">Próximo</span>
+    <div class="ticket next-game rise-in rounded-2xl border border-navy-600/60 px-4 sm:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+      <div class="flex flex-col items-center sm:items-start gap-1 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-gold pulse-dot"></span>
+          <span class="text-[11px] font-bold tracking-[0.2em] text-gold uppercase">Próximo jogo</span>
         </div>
-        <div id="heroCountdown" class="mt-0.5 scale-90 sm:scale-100 origin-top-left"></div>
+        <div id="heroCountdown" class="mt-1"></div>
       </div>
-
-      <!-- Centro: Times e Escudos -->
-      <div class="flex items-center gap-1.5 sm:gap-6 flex-1 justify-center min-w-0 px-1">
-        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0 justify-end">
-          <span class="font-display text-[11px] sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
-          ${badge(next.team1)}
+      <div class="flex items-center gap-3 sm:gap-6 flex-1 justify-center w-full min-w-0">
+        <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
+          <span class="font-display text-xs sm:text-lg text-slate-200 truncate text-right">${t1.name}</span>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t1.color}">${t1.abbr}</div>
         </div>
-        <span class="font-display text-slate-500 text-xs sm:text-sm shrink-0">vs</span>
-        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
-          ${badge(next.team2)}
-          <span class="font-display text-[11px] sm:text-lg text-slate-200 truncate">${t2.name}</span>
+        <span class="font-display text-slate-500 text-sm shrink-0">vs</span>
+        <div class="flex items-center gap-2 flex-1 min-w-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-display font-bold text-xs sm:text-sm text-white shrink-0 shadow-inner" style="background:${t2.color}">${t2.abbr}</div>
+          <span class="font-display text-xs sm:text-lg text-slate-200 truncate">${t2.name}</span>
         </div>
       </div>
-
-      <!-- Lado direito: Data e Estádio -->
-      <div class="text-right shrink-0">
-        <p class="font-mono text-[9px] sm:text-xs text-slate-400">${fmtLongDate(next.date)} · ${next.time || "--:--"}</p>
-        <p class="text-[8px] sm:text-[11px] text-slate-500 mt-0.5 truncate max-w-[80px] sm:max-w-none">${next.stadium || "Estádio a definir"}</p>
+      <div class="text-center sm:text-right shrink-0">
+        <p class="font-mono text-xs text-slate-400">${fmtLongDate(next.date)} · ${next.time || "--:--"}</p>
+        <p class="text-[11px] text-slate-500 mt-0.5">${next.stadium || "Estádio a definir"}</p>
       </div>
     </div>`;
 
   startCountdown(next.date, next.time);
 }
 
-/* ======================= ESTATÍSTICAS ======================= */
+/* ======================= ESTATÍSTICAS CHAMPIONS LEAGUE ======================= */
+function computeChampionsStats(list = []) {
+  const jogosUcl = list.filter(g => 
+    g && (g.comp === "champions" || g.comp === "ucl") && 
+    g.score && g.score.trim().toLowerCase() !== "x"
+  );
+
+  let v = 0, e = 0, d = 0, gp = 0, gc = 0;
+
+  jogosUcl.forEach(g => {
+    const cleanScore = g.score.split("(")[0].trim();
+    const scores = cleanScore.toLowerCase().split("x").map(s => parseInt(s.trim(), 10));
+
+    if (scores.length === 2 && !isNaN(scores[0]) && !isNaN(scores[1])) {
+      const [s1, s2] = scores;
+      const barEmCasa = g.team1 === "barcelona";
+      const golsBar = barEmCasa ? s1 : s2;
+      const golsAdv = barEmCasa ? s2 : s1;
+
+      gp += golsBar;
+      gc += golsAdv;
+
+      if (golsBar > golsAdv) v++;
+      else if (golsBar === golsAdv) e++;
+      else d++;
+    }
+  });
+
+  const totalJogos = jogosUcl.length;
+  const pontosConquistados = (v * 3) + e;
+  const pontosDisputados = totalJogos * 3;
+  const pontosRestantes = (8 - totalJogos) * 3;
+  const saldoGols = gp - gc;
+
+  let statusClassificacao = "Em andamento";
+
+  if (typeof posicao !== 'undefined' && posicao <= 8) {
+    statusClassificacao = "Zona de Classificação Direta (G-8)";
+  } else if (pontosConquistados >= 15) {
+    statusClassificacao = "Zona de Classificação Direta (G-8)";
+  } else if (pontosConquistados + pontosRestantes < 9) {
+    statusClassificacao = "Risco de Eliminação";
+  } else if (typeof posicao !== 'undefined' && posicao <= 24 && posicao >= 9) {
+    statusClassificacao = "Zona de Play-offs (G-24)";
+  } else if (totalJogos > 0) {
+    statusClassificacao = "Zona de Classificação Direta (G-8)";
+  }
+
+  return {
+    totalJogos,
+    jogosRestantes: Math.max(0, 8 - totalJogos),
+    pontosConquistados,
+    saldoGols,
+    statusClassificacao,
+    aproveitamentoUcl: pontosDisputados ? Math.round((pontosConquistados / pontosDisputados) * 100) : 0
+  };
+}
+
+function renderCardLaLiga(stats) {
+  const totalJogos = stats.totalJogos !== undefined ? stats.totalJogos : (stats.totalJogados || 0);
+  const totalPontos = stats.pontos !== undefined ? stats.pontos : 0;
+  const statusProj = stats.statusLaLiga || stats.statusClassificacao || "Zona de Classificação";
+  const posAtual = stats.posLaLigaTexto || stats.posLaLiga || "1º";
+
+  return `
+    <div class="col-span-full bg-gradient-to-r from-red-950/80 via-navy-900/90 to-amber-950/80 border border-red-500/30 rounded-xl p-4 shadow-lg mb-2">
+      <div class="flex flex-col sm:flex-row items-center justify-between border-b border-white/10 pb-3 mb-3 gap-2">
+        <span class="text-xs uppercase tracking-widest font-bold text-red-400 flex items-center gap-1.5">
+          🇪🇸 LALIGA EA SPORTS
+        </span>
+        <div class="flex items-center gap-3">
+          <span class="text-xs bg-gold/20 text-gold px-2.5 py-0.5 rounded-full border border-gold/30 font-semibold">
+            ${totalPontos} pts
+          </span>
+          <span class="text-[11px] bg-red-500/20 text-red-300 px-2.5 py-0.5 rounded-full border border-red-400/30">
+            ${totalJogos} Jogos
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-2 px-1">
+        <div>
+          <p class="text-[10px] uppercase text-slate-400">Status Projetado</p>
+          <p class="text-xs font-bold text-emerald-400 mt-0.5">${statusProj}</p>
+        </div>
+        <div class="text-center sm:text-right">
+          <p class="text-[10px] uppercase text-slate-400">Posição Atual</p>
+          <p class="text-xs font-bold text-gold mt-0.5">${posAtual}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCardChampionsLeague(uclStats) {
+  const totalPontos = uclStats.pontosConquistados !== undefined ? uclStats.pontosConquistados : (uclStats.pontos || 0);
+  const statusProj = uclStats.statusClassificacao || "Zona de Classificação Direta (G-8)";
+  const posAtual = uclStats.posUclTexto || uclStats.posChampions || "5º (Fase de Liga)";
+
+  return `
+    <div class="col-span-full bg-gradient-to-r from-blue-950/80 via-navy-900/90 to-indigo-950/80 border border-blue-500/30 rounded-xl p-4 shadow-lg mb-2">
+      <div class="flex flex-col sm:flex-row items-center justify-between border-b border-white/10 pb-3 mb-3 gap-2">
+        <span class="text-xs uppercase tracking-widest font-bold text-blue-400 flex items-center gap-1.5">
+          ⚽ UEFA CHAMPIONS LEAGUE · FASE DE LIGA
+        </span>
+        <div class="flex items-center gap-3">
+          <span class="text-xs bg-gold/20 text-gold px-2.5 py-0.5 rounded-full border border-gold/30 font-semibold">
+            ${totalPontos} pts
+          </span>
+          <span class="text-[11px] bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full border border-blue-400/30">
+            ${uclStats.totalJogos}/8 Jogos
+          </span>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-2 px-1">
+        <div>
+          <p class="text-[10px] uppercase text-slate-400">Status Projetado</p>
+          <p class="text-xs font-bold text-emerald-400 mt-0.5">${statusProj}</p>
+        </div>
+        <div class="text-center sm:text-right">
+          <p class="text-[10px] uppercase text-slate-400">Posição Atual</p>
+          <p class="text-xs font-bold text-gold mt-0.5">${posAtual}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ======================= DASHBOARD DE ESTATÍSTICAS ======================= */
 function computeStats(list = []) {
   const jogados = Array.isArray(list) 
-    ? list.filter(g => g && isGamePlayed(g.score))
+    ? list.filter(g => g && g.score && g.score.trim().toLowerCase() !== "x")
     : [];
   
   let v = 0, e = 0, d = 0, gp = 0, gc = 0;
   let jogosSemSofrerGols = 0;
+
   let vCasa = 0, eCasa = 0, dCasa = 0;
   let vFora = 0, eFora = 0, dFora = 0;
+
   let streakVitoriasAtual = 0, maxVitorias = 0;
   let streakInvencivelAtual = 0, maxInvencivel = 0;
+  
   const resultados = [];
 
   const ordenados = [...jogados].sort((a, b) => parseDate(a.date) - parseDate(b.date));
@@ -337,23 +505,29 @@ function computeStats(list = []) {
 
       if (golsBar > golsAdv) {
         v++;
-        resultados.push("V");
+        resultados.push("T");
         if (barEmCasa) vCasa++; else vFora++;
+
         streakVitoriasAtual++;
         if (streakVitoriasAtual > maxVitorias) maxVitorias = streakVitoriasAtual;
+
         streakInvencivelAtual++;
         if (streakInvencivelAtual > maxInvencivel) maxInvencivel = streakInvencivelAtual;
+
       } else if (golsBar === golsAdv) {
         e++;
         resultados.push("E");
         if (barEmCasa) eCasa++; else eFora++;
+
         streakVitoriasAtual = 0;
         streakInvencivelAtual++;
         if (streakInvencivelAtual > maxInvencivel) maxInvencivel = streakInvencivelAtual;
+
       } else {
         d++;
         resultados.push("D");
         if (barEmCasa) dCasa++; else dFora++;
+
         streakVitoriasAtual = 0;
         streakInvencivelAtual = 0;
       }
@@ -363,7 +537,19 @@ function computeStats(list = []) {
   const totalJogados = jogados.length;
   const pontos = (v * 3) + e;
   const saldoGols = gp - gc;
+  const mediaGolsPro = totalJogados ? (gp / totalJogados).toFixed(2) : "0.00";
   const aproveitamento = totalJogados ? Math.round((pontos / (totalJogados * 3)) * 100) : 0;
+
+  let posLaLiga = "-";
+  let posChampions = "Fase de Liga";
+
+  if (typeof posicoesCompeticao !== "undefined" && posicoesCompeticao !== null) {
+    posLaLiga = posicoesCompeticao.laliga || "-";
+    const posUcl = posicoesCompeticao.champions || posicoesCompeticao.ucl;
+    if (posUcl) {
+      posChampions = `${posUcl} <span class="block text-[10px] text-slate-400 font-normal">Fase de Liga</span>`;
+    }
+  }
 
   const totalCasa = vCasa + eCasa + dCasa;
   const pontosCasa = (vCasa * 3) + eCasa;
@@ -377,22 +563,25 @@ function computeStats(list = []) {
 
   return { 
     v, e, d, gp, gc, pontos, aproveitamento, totalJogados,
-    posLaLiga: "1º", posChampions: "5º", posCopaDelRey: "-", posSupercopa: "-",
-    saldoGols, mediaGolsPro: totalJogados ? (gp / totalJogados).toFixed(2) : "0.00", jogosSemSofrerGols,
+    posLaLiga, posChampions,
+    saldoGols, mediaGolsPro, jogosSemSofrerGols,
     ultimos5, maxVitorias, maxInvencivel,
-    aproveitamentoCasa, aproveitamentoFora
+    pontosCasa, aproveitamentoCasa, totalCasa,
+    pontosFora, aproveitamentoFora, totalFora
   };
 }
 
 function renderFormaRecente(ultimos5) {
   if (!ultimos5 || ultimos5.length === 0) return '<span class="text-slate-500 text-sm">-</span>';
+
   return `
     <div class="flex items-center justify-center gap-1 mt-1">
       ${ultimos5.map(res => {
         let bgClass = "bg-slate-700 text-slate-300";
-        if (res === "V") bgClass = "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+        if (res === "T" || res === "V") bgClass = "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
         if (res === "E") bgClass = "bg-slate-500/20 text-slate-300 border border-slate-500/30";
         if (res === "D") bgClass = "bg-red-500/20 text-red-400 border border-red-500/30";
+        
         return `<span class="w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center ${bgClass}">${res}</span>`;
       }).join("")}
     </div>
@@ -408,43 +597,70 @@ function statCard(label, value, colorClass) {
 }
 
 function renderDashboard() {
-  const tabAtual = activeTab;
+  const tabAtual = typeof activeTab !== "undefined" ? activeTab : "todos";
   const list = gamesForTab(tabAtual);
+  const todosOsJogos = gamesForTab("todos");
+  
   const s = computeStats(list);
+  const uclStats = computeChampionsStats(todosOsJogos);
+  const totalPontosUcl = uclStats.pontosConquistados !== undefined ? uclStats.pontosConquistados : (uclStats.pontos || 0);
   const compLabel = COMPS.find(c => c.id === tabAtual)?.label || "Geral";
 
   const titleEl = document.getElementById("dashboardTitle");
   if (titleEl) titleEl.textContent = `Desempenho · ${compLabel}`;
 
+  const isChampions = tabAtual === "champions" || tabAtual === "todos";
+  const isLaLigaTab = tabAtual === "laliga" || tabAtual === "todos";
+  
   const saldoFormatado = s.saldoGols > 0 ? `+${s.saldoGols}` : s.saldoGols;
   const corSaldo = s.saldoGols > 0 ? "text-emerald-400" : (s.saldoGols < 0 ? "text-red-400" : "text-slate-300");
 
   const gridEl = document.getElementById("statGrid");
   if (gridEl) {
+    let headerHtml = "";
+    
+    if (isChampions && tabAtual === "champions") {
+      headerHtml = renderCardChampionsLeague(uclStats);
+    } else if (tabAtual === "laliga") {
+      headerHtml = renderCardLaLiga(s);
+    }
+
+    let cardPosicaoHtml = "";
+    if (tabAtual === "laliga") {
+      cardPosicaoHtml = statCard("Posição La Liga", s.posLaLiga, "text-gold");
+    } else if (tabAtual === "champions") {
+      cardPosicaoHtml = statCard("Posição Champions", s.posChampions, "text-gold");
+    } else {
+      cardPosicaoHtml = `
+        ${statCard("Posição La Liga", s.posLaLiga, "text-gold")}
+        ${statCard("Posição Champions", s.posChampions, "text-gold")}
+      `;
+    }
+
     gridEl.innerHTML = `
-      ${statCard("Posição La Liga", s.posLaLiga, "text-gold")}
-      ${statCard("Posição Champions", s.posChampions, "text-gold")}
+      ${headerHtml}
+      ${cardPosicaoHtml}
       ${statCard("Jogos", s.totalJogados, "text-slate-200")}
       ${statCard("Aproveitamento Geral", s.aproveitamento + "%", "text-gold")}
       ${statCard("Aprov. Casa (Camp Nou)", s.aproveitamentoCasa + "%", "text-emerald-400")}
       ${statCard("Aprov. Fora", s.aproveitamentoFora + "%", "text-blue-400")}
-      ${statCard("Vitórias", s.v, "text-emerald-400")}
+      ${statCard("Triunfos", s.v, "text-emerald-400")}
       ${statCard("Empates", s.e, "text-slate-300")}
       ${statCard("Derrotas", s.d, "text-red-400")}
       ${statCard("Forma Recente", renderFormaRecente(s.ultimos5), "")}
       ${statCard("Gols Pró / Contra", `${s.gp} <span class="text-slate-500 text-sm">/</span> ${s.gc}`, "text-blue-400")}
       ${statCard("Saldo de Gols", saldoFormatado, corSaldo)}
       ${statCard("Clean Sheets", s.jogosSemSofrerGols, "text-emerald-400")}
-      ${statCard("Maior Seq. Vitórias", `${s.maxVitorias} <span class="text-xs text-slate-400">jogos</span>`, "text-emerald-400")}
+      ${statCard("Maior Seq. Triunfos", `${s.maxVitorias} <span class="text-xs text-slate-400">jogos</span>`, "text-emerald-400")}
       ${statCard("Maior Invencibilidade", `${s.maxInvencivel} <span class="text-xs text-slate-400">jogos</span>`, "text-gold")}
     `;
   }
 }
-
+/* ======================= PROGRESSO DA TEMPORADA ======================= */
 function renderProgress() {
   const list = gamesForTab(activeTab);
   const total = list.length;
-  const jogados = list.filter(g => isGamePlayed(g.score)).length;
+  const jogados = list.filter(g => g.score && g.score.trim().toLowerCase() !== "x").length;
   const pct = total ? Math.round((jogados / total) * 100) : 0;
 
   const lbl = document.getElementById("progressLabel");
@@ -458,6 +674,7 @@ function renderProgress() {
   if (wrap) wrap.classList.toggle("hidden", total === 0);
 }
 
+/* ======================= RENDER: ABAS ======================= */
 function renderTabs() {
   const bar = document.getElementById("tabBar");
   if (!bar) return;
@@ -472,6 +689,7 @@ function renderTabs() {
   });
 }
 
+/* ======================= RENDER: SUBFILTROS ======================= */
 function renderSubFilters() {
   const bar = document.getElementById("subFilterBar");
   if (!bar) return;
@@ -491,24 +709,31 @@ function renderSubFilters() {
   });
 }
 
+/* ======================= RENDER: CARD (TICKET) ======================= */
+function badge(slug) {
+  const t = getTeam(slug);
+  return `<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-display font-bold text-[11px] sm:text-xs text-white shrink-0 shadow-inner" style="background:${t.color}">${t.abbr}</div>`;
+}
+
 function renderCard(g, isNext) {
-  const played = isGamePlayed(g.score);
+  const played = g.score && g.score.trim().toLowerCase() !== "x";
   const [s1, s2] = played ? g.score.split("x") : ["", ""];
   const t1 = getTeam(g.team1), t2 = getTeam(g.team2);
-  const compLabel = COMPS.find(c => c.id === g.comp || (c.match && c.match.includes(g.comp)))?.label ?? g.comp;
+  const compLabel = COMPS.find(c => c.id === g.comp || (c.match && c.match.includes(g.comp)))?.label
+                    ?? { copadelrey: "Copa del Rey", supercopa: "Supercopa" }[g.comp]
+                    ?? g.comp;
 
   return `
   <div class="ticket ${isNext ? "next-game" : ""} rise-in rounded-xl overflow-hidden flex border border-navy-600/60 group mb-3">
-    <!-- Bloco da Data (Esquerda) -->
-    <div class="w-16 sm:w-28 shrink-0 flex flex-col items-center justify-center py-2 sm:py-4 bg-navy-950/40">
-      <span class="font-mono text-[9px] sm:text-[10px] text-slate-500 uppercase">${fmtLongDate(g.date).split(" ")[0]}</span>
-      <span class="font-display text-lg sm:text-2xl text-white font-semibold leading-none mt-0.5">${parseDate(g.date).getDate()}</span>
-      <span class="font-mono text-[9px] sm:text-[10px] text-slate-500 uppercase mt-0.5">${fmtLongDate(g.date).split(" ").slice(1).join(" ")}</span>
+    <div class="w-20 sm:w-28 shrink-0 flex flex-col items-center justify-center py-4 bg-navy-950/40">
+      <span class="font-mono text-[10px] text-slate-500 uppercase">${fmtLongDate(g.date).split(" ")[0]}</span>
+      <span class="font-display text-xl sm:text-2xl text-white font-semibold leading-none mt-0.5">${parseDate(g.date).getDate()}</span>
+      <span class="font-mono text-[10px] text-slate-500 uppercase mt-0.5">${fmtLongDate(g.date).split(" ").slice(1).join(" ")}</span>
     </div>
-    <div class="perforation my-2 sm:my-3"></div>
-    <div class="flex-1 px-2.5 sm:px-5 py-3 sm:py-4 min-w-0">
-      <div class="flex items-center justify-between mb-2 sm:mb-3">
-        <p class="text-[9px] sm:text-[11px] font-semibold text-gold uppercase tracking-wider truncate mr-1">
+    <div class="perforation my-3"></div>
+    <div class="flex-1 px-3 sm:px-5 py-4 min-w-0">
+      <div class="flex items-center justify-between mb-3">
+        <p class="text-[10px] sm:text-[11px] font-semibold text-gold uppercase tracking-wider truncate mr-1">
           ${compLabel} <span class="text-slate-500 font-normal">• ${g.round}</span>
           ${isNext ? '<span class="ml-1 sm:ml-2 text-gold">★ próximo</span>' : ""}
         </p>
@@ -521,23 +746,23 @@ function renderCard(g, isNext) {
           </button>
         </div>
       </div>
-      <div class="flex items-center gap-1.5 sm:gap-3">
-        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0 justify-end">
-          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate text-right">${t1.name}</span>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-2 flex-1 min-w-0 justify-end">
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate text-right team-name-label">${t1.name}</span>
           ${badge(g.team1)}
         </div>
-        <div class="shrink-0 px-1">
+        <div class="shrink-0 px-1 sm:px-2">
           ${played
-            ? `<div class="font-display text-xs sm:text-xl font-bold text-white bg-navy-950/60 rounded-lg px-2 sm:px-3 py-1 border border-navy-600">${s1} <span class="text-slate-500">x</span> ${s2}</div>`
-            : `<div class="font-mono text-[10px] sm:text-xs text-slate-500 border border-dashed border-navy-600 rounded-lg px-1.5 py-1">${g.time || "--:--"}</div>`}
+            ? `<div class="font-display text-sm sm:text-xl font-bold text-white bg-navy-950/60 rounded-lg px-2 sm:px-3 py-1 border border-navy-600">${s1} <span class="text-slate-500">x</span> ${s2}</div>`
+            : `<div class="font-mono text-[10px] sm:text-xs text-slate-500 border border-dashed border-navy-600 rounded-lg px-2 py-1.5">${g.time || "--:--"}</div>`}
         </div>
-        <div class="flex items-center gap-1.5 sm:gap-2 flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-1 min-w-0">
           ${badge(g.team2)}
-          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate">${t2.name}</span>
+          <span class="text-xs sm:text-sm font-medium text-slate-200 truncate team-name-label">${t2.name}</span>
         </div>
       </div>
-      <p class="text-[9px] sm:text-[11px] text-slate-500 mt-2 sm:mt-3 flex items-center gap-1.5 truncate">
-        <svg class="shrink-0" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <p class="text-[10px] sm:text-[11px] text-slate-500 mt-3 flex items-center gap-1.5 truncate">
+        <svg class="shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
         <span class="truncate">${g.stadium || "Estádio a definir"} ${g.time && played ? "• " + g.time : ""}</span>
       </p>
     </div>
@@ -1127,7 +1352,7 @@ function renderLists() {
   }
 
   renderJogosInteresse();
-  renderClassificacao();
+  if (typeof renderClassificacao === "function") renderClassificacao();
 }
 
 /* ======================= RENDER PRINCIPAL ======================= */
@@ -1137,7 +1362,34 @@ function render() {
   renderProgress();
   renderTabs();
   renderSubFilters();
-  renderLists();
+  initBuscaJogos();
+
+  const nextGame = getNextGame();
+  const list = gamesForTab(activeTab).filter(jogoCombinaComBusca);
+
+  const recentes = list.filter(g => g.score && g.score.trim().toLowerCase() !== "x").sort((a, b) => parseDate(b.date) - parseDate(a.date));
+  const proximos = list.filter(g => !g.score || g.score.trim().toLowerCase() === "x").sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+  const showRecentes = activeSub === "todos" || activeSub === "recentes";
+  const showProximos = activeSub === "todos" || activeSub === "proximos";
+
+  const secRecentes = document.getElementById("section-recentes");
+  const secProximos = document.getElementById("section-proximos");
+
+  if (secRecentes) secRecentes.classList.toggle("hidden", !showRecentes || recentes.length === 0);
+  if (secProximos) secProximos.classList.toggle("hidden", !showProximos || proximos.length === 0);
+
+  const listRecentesEl = document.getElementById("listRecentes");
+  const listProximosEl = document.getElementById("listProximos");
+
+  if (listRecentesEl) listRecentesEl.innerHTML = recentes.map(g => renderCard(g, false)).join("");
+  if (listProximosEl) listProximosEl.innerHTML = proximos.map(g => renderCard(g, nextGame && g.id === nextGame.id)).join("");
+
+  const totalVisible = (showRecentes ? recentes.length : 0) + (showProximos ? proximos.length : 0);
+  const emptyState = document.getElementById("emptyState");
+  if (emptyState) emptyState.classList.toggle("hidden", totalVisible !== 0);
+
+  renderJogosInteresse();
 
   document.querySelectorAll(".del-btn").forEach(btn => {
     btn.onclick = () => {
@@ -1154,9 +1406,8 @@ function render() {
   });
 }
 
-/* ======================= MODAL PRINCIPAL ======================= */
+/* ======================= MODAL ======================= */
 const overlay = document.getElementById("modalOverlay");
-let mandoSelecionado = "casa";
 
 function openModal() {
   if (!overlay) return;
@@ -1194,6 +1445,7 @@ function openModalForEdit(id) {
   const g = games.find(x => x.id === id);
   if (!g) return;
   editingId = id;
+  
   openModal();
   
   const title = document.getElementById("modalTitle");
@@ -1213,12 +1465,12 @@ function openModalForEdit(id) {
   if (document.getElementById("fDate")) document.getElementById("fDate").value = fmtInputDate(g.date);
   if (document.getElementById("fTime")) document.getElementById("fTime").value = g.time || "";
   if (document.getElementById("fStadium")) document.getElementById("fStadium").value = g.stadium || "";
-  if (document.getElementById("fScore")) document.getElementById("fScore").value = !isGamePlayed(g.score) ? "" : g.score;
+  if (document.getElementById("fScore")) document.getElementById("fScore").value = g.score === "x" ? "" : g.score;
 }
 
+// Event Listeners do Formulário
 document.addEventListener("DOMContentLoaded", () => {
   render();
-  initBuscaJogos();
 
   document.querySelectorAll(".mando-btn").forEach(b => {
     b.onclick = () => setMando(b.dataset.mando);
