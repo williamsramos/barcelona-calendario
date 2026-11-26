@@ -58,7 +58,7 @@ const defaultGames = [
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 2", date: "2026-10-13", time: "16:00", team1: "galatasaray", team2: "barcelona", stadium: "Rams Park", score: "1x4" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 3", date: "2026-10-20", time: "16:00", team1: "paris-saint-germain", team2: "barcelona", stadium: "Parc des Princes", score: "1x2" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 4", date: "2026-11-03", time: "17:00", team1: "barcelona", team2: "aston-villa", stadium: "Camp Nou", score: "3x0" },
-  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-25", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "x" },
+  { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 5", date: "2026-11-25", time: "14:45", team1: "sabah", team2: "barcelona", stadium: "Bank Respublika Arena", score: "1x4" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 6", date: "2026-12-08", time: "17:00", team1: "barcelona", team2: "manchester-city", stadium: "Camp Nou", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 7", date: "2027-01-20", time: "17:00", team1: "sporting-cp", team2: "barcelona", stadium: "José Alvalade", score: "x" },
   { id: cryptoId(), comp: "champions", round: "Fase de Liga · Jornada 8", date: "2027-01-27", time: "17:00", team1: "barcelona", team2: "como", stadium: "Camp Nou", score: "x" },
@@ -920,9 +920,7 @@ function normalizarJogoInteresse(j) {
 
 const JOGOS_INTERESSE_SEED = [
   // ---------------- LA LIGA: REAL MADRID & ATLÉTICO DE MADRID ----------------
-  [12, "2026-11-07", "17:00", "valencia", "real-madrid", "laliga"],
-  [13, "2026-11-21", "17:00", "real-madrid", "celta-vigo", "laliga"],
-  [14, "2026-11-29", "", "real-madrid", "alaves", "laliga"],
+  [14, "2026-11-28", "17:00", "real-madrid", "alaves", "laliga"],
   [15, "2026-12-06", "", "athletic-club", "real-madrid", "laliga"],
   [16, "2026-12-13", "", "real-madrid", "osasuna", "laliga"],
   [17, "2026-12-20", "", "deportivo-a-coruna", "real-madrid", "laliga"],
@@ -947,8 +945,7 @@ const JOGOS_INTERESSE_SEED = [
   [37, "2027-05-23", "", "alaves", "real-madrid", "laliga"],
   [38, "2027-05-30", "", "real-madrid", "deportivo-a-coruna", "laliga"],
 
-  [13, "2026-11-22", "17:00", "getafe", "atletico-de-madrid", "laliga"],
-  [14, "2026-11-29", "", "elche", "atletico-de-madrid", "laliga"],
+  [14, "2026-11-28", "14:30", "elche", "atletico-de-madrid", "laliga"],
   [15, "2026-12-06", "", "atletico-de-madrid", "real-betis", "laliga"],
   [16, "2026-12-13", "", "atletico-de-madrid", "valencia", "laliga"],
   [17, "2026-12-20", "", "celta-vigo", "atletico-de-madrid", "laliga"],
@@ -972,27 +969,7 @@ const JOGOS_INTERESSE_SEED = [
   [37, "2027-05-23", "", "atletico-de-madrid", "athletic-club", "laliga"],
   [38, "2027-05-30", "", "real-betis", "atletico-de-madrid", "laliga"],
 
-  // ---------------- CHAMPIONS LEAGUE (Fase de Liga - Jornadas 5 a 8) ----------------
-  [5, "2026-11-24", "14:45", "bodo", "lask", "champions"],
-  [5, "2026-11-24", "14:45", "galatasaray", "aston-villa", "champions"],
-  [5, "2026-11-24", "17:00", "real-madrid", "psv", "champions"],
-  [5, "2026-11-24", "17:00", "manchester-city", "napoli", "champions"],
-  [5, "2026-11-24", "17:00", "arsenal", "dortmund", "champions"],
-  [5, "2026-11-24", "17:00", "feyenoord", "porto", "champions"],
-  [5, "2026-11-24", "17:00", "leipzig", "lens", "champions"],
-  [5, "2026-11-24", "17:00", "bratislava", "real-betis", "champions"],
-  [5, "2026-11-24", "17:00", "como", "aek", "champions"],
-
-  [5, "2026-11-25", "14:45", "slavia", "villarreal", "champions"],
-  [5, "2026-11-25", "14:45", "sabah", "barcelona", "champions"],
-  [5, "2026-11-25", "17:00", "paris-saint-germain", "roma", "champions"],
-  [5, "2026-11-25", "17:00", "inter", "stuttgart", "champions"],
-  [5, "2026-11-25", "17:00", "atletico-de-madrid", "viking", "champions"],
-  [5, "2026-11-25", "17:00", "sporting-cp", "man-utd", "champions"],
-  [5, "2026-11-25", "17:00", "brugge", "liverpool", "champions"],
-  [5, "2026-11-25", "17:00", "lille", "bayern", "champions"],
-  [5, "2026-11-25", "17:00", "shakhtar", "fenerbahce", "champions"],
-
+  // ---------------- CHAMPIONS LEAGUE (Fase de Liga - Jornadas 6 a 8) ----------------
   [6, "2026-12-08", "14:45", "viking", "feyenoord", "champions"],
   [6, "2026-12-08", "14:45", "villarreal", "sabah", "champions"],
   [6, "2026-12-08", "17:00", "bayern", "slavia", "champions"],
